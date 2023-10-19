@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo de formulario</title>
+</head>
+<body>
+    <h1>Registro de usuario</h1>
+    <form action="">
+        
+        <label for="">Nombre:</label><br>
+        <input type="text" name="nombre"><br>
+        <label for="">Apellido:</label><br>
+        <input type="text" name="apellido"><br>
+        <label for="">Sexo:</label><br>
+        <!--
+        <select name="" id="">
+            <option value="hombre">Hombre</option>
+            <option value="mujer">Mujer</option>
+            <option value="nodecir">Prefiero no decirlo</option>
+            </select><br>
+        -->
+        
+        <input type="radio" name="sexo">Hombre<br>
+        <input type="radio" name="sexo">Mujer<br>
+        <input type="radio" name="sexo">Prefiero no decirlo<br>
+        <label for="">Intereses:</label><br>
+        <input type="checkbox" name="leer">Leer<br>
+        <input type="checkbox" name="viajes">Viajes<br>
+        <input type="checkbox" name="deporte">Deporte<br>
+        <input type="checkbox" name="estudio">Estudio<br>
+        <label for="">Email:</label><br>
+        <input type="email" name="email" id=""><br>
+        <label for="">Contraseña:</label><br>
+        <input type="password" name="password"><br>
+        <label for="">Repite contraseña:</label><br>
+        <input type="password" name="password"><br><br>
+        <fieldset>
+            <legend>Datos personales:</legend>
+        <label for="">Foto de perfil:</label><br>
+        <input type="file" name="foto"><br><br>
+        <label for="">Fecha de nacimiento:</label><br>
+        <input type="date" name="date"><br><br>
+        <label for="">Color favorito:</label><br>
+        <input type="color" name="color"><br><br>
+        <label for="">Descríbete a ti mismo:</label><br>
+        <textarea minlength="70" name="Descripción" id="" cols="30" rows="10"></textarea>
+        <input type="submit" value="Registrate"><br>
+    </fieldset>
+    </form>
+</body>
+</html>
