@@ -12,7 +12,26 @@
             <input type="radio" name="idioma" value="idiomaingles">Inglés<br>
             <input type="radio" name="idioma" value="idiomaaleman">Alemán<br>
             <input type="radio" name="idioma" value="idiomafrances">Francés<br><br>
-            <input type="button" name="conector">USB<br>
+            <select name="conector">
+                <option value="usb">USB</option>
+                <option value="paralelo">Paralelo</option>
+                <option value="ps2">PS2</option><br></select><br>
+            <label>Nombre</label>
+            <input type="text" name="nombre"><br>
+            <label>Apellidos</label>
+            <input type="text" name="apelidos"><br>
+        </fieldset>
+        <fieldset>
+            <legend>Indique sus preferencias por favor</legend>
+            <select multiple>
+                <option  value="hombre">Hombre</option>
+                <option  value="mujer">Mujer</option></select><br>
+
+            <input type="checkbox" name="sexo" value="sexomujer">Mujer<br>
+            <input type="checkbox" name="sexo" value="sexohombre">Hombre<br><br>
+            <label>Elija una fecha:</label>
+            <input type="date">
+
         </fieldset>
         
     </form>
