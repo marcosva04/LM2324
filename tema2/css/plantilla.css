@@ -1,0 +1,22 @@
+#burguerarriba{
+    height: 40px;
+    width: 50px;
+    position: fixed;
+    z-index: 1;
+   
+}
+
+#enlacesizq{
+    position: fixed;
+    float: left;
+    top: 400px;
+}
+
+#texto{
+    position: absolute;
+    text-align: center;
+    top: 400px;
+    right: 20%;
+    left: 20%;
+    
+}
