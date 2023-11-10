@@ -1,22 +1,62 @@
-#burguerarriba{
-    height: 40px;
-    width: 50px;
+#publicidadarriba{
+    height: 100px;
+    width: 1920px;
     position: fixed;
     z-index: 1;
-   
 }
-
 #enlacesizq{
     position: fixed;
-    float: left;
-    top: 400px;
+    top: 110px;
+    right: 82%;
+    text-decoration: none;
 }
-
-#texto{
+#texto1{
     position: absolute;
+    float: right;
     text-align: center;
-    top: 400px;
+    top: 100px;
+    right: 20%;
+    left: 60%;
+}
+#texto2{
+    position: absolute;
+    top: 550px;
     right: 20%;
     left: 20%;
-    
+}
+#texto3{
+    position: absolute;
+    top: 620px;
+    right: 60%;
+    left: 20%;
+}
+#texto4{
+    position: absolute;
+    top: 1050px;
+    right: 20%;
+    left: 20%;
+}
+#burguer{
+    background-image: url(../../images/burguer.png);
+    position: fixed;
+    top: 100px;
+    left: 81%;
+    width: 300px;
+    height: 600px;
+}
+#mario{
+    background-image: url(../../images/mario.jpg);
+    position: absolute;
+    width: 500px;
+    height: 400px;
+    top: 620px;
+    right: 20%;
+}
+#minion{
+    background-image: url(../../images/minion.jpg);
+    position: absolute;
+    width: 500px;
+    height: 400px;
+    top: 120px;
+    left: 20%;
 }
