@@ -1,13 +1,18 @@
 /* Esta es la hoja de estiño del ejrcicio 1 CSS Felxbox del modelo de examen */
 body{
     font-family: 'Trebuchet MS', 'Geneva', 'sans-serif'; /* Fuente de las letras */
+    margin: 0;
     background: url(../../images/bg.jpg) no-repeat, center center fixed;
-    background-size: cover; /* Para que cubra toda la pantalla */
+    background-size: cover; /* Para que cubra toda la pantalla */ 
 }
 p::first-letter /* Agrandar primera letra de párrafo */{
-    font-size: 200%;
+    font-size: 1rem;
     font-weight: bold; /*  */
     color: #4c3803;
+}
+article, aside, footer, header{
+    padding: 1rem;
+    box-sizing: border-box;
 }
 header/* Estilo del encabezado */{
     background-color: #b28306;
@@ -15,18 +20,18 @@ header/* Estilo del encabezado */{
     text-align: center;
     border-radius: 20px;
     border-bottom: 1px solid;
-    padding: 1rem;
+    order: 1;
 }
 aside/* Estilo del lateral */{
     background-color: #b28306;
-    color: #4c3803;
     border-radius: 20px;
 }
 nav /* Estilo de la barra de navegación (Menú) */{
     display: flex;
+    order: 2;
     background-color: #ebcd7c;
     border-radius: 20px;
-    padding: 5px 0px;
+    padding: 10px 0;
 }
 nav a /* Estilo para enlaces dentro de la barra de navegación */{
     flex: auto;
@@ -34,6 +39,7 @@ nav a /* Estilo para enlaces dentro de la barra de navegación */{
     background-color: #4c3803;
     color: #b28306;
     margin: 0 5px;
+    padding: 5px 0;
     border-radius: 20px;
     text-decoration: none;
 }
@@ -47,7 +53,7 @@ a{
     font-weight: bold;
     text-decoration: none;
 }
-@media screen and (min-width: 480px){/* Cambiar disposición de los elementos cuando el tamaño de la pantalla sea superior a 480px */
+@media screen and (min-width: 560px){/* Cambiar disposición de los elementos cuando el tamaño de la pantalla sea superior a 480px */
     body{
         display: flex;
         flex-direction: column;
@@ -56,17 +62,26 @@ a{
     }
     main{
         display: flex;
+        order: 3;
         flex-wrap: wrap;
+        box-sizing: border-box;
         border-bottom: 0.5rem solid;
     }
-    nav, header{
-        order: -1;
+    
+   header{
+    order: 1;
+}
+    nav{
+        order: 2;
    }
    article{
         flex: 75%;
    }
    aside{
         flex: 25%;
+   }
+   footer{
+    order: 4;
    }
 }
 
