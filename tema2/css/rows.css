@@ -20,24 +20,22 @@ body{
   height: auto;
 }
 .caja1 {
-background-color: lightblue;
-  grid-column: 1 / span 3;
-  grid-row: 1;
+	background-color: lightblue;
+  grid-column: 1;
+  grid-row: 1 / span 2;
 }
 .caja2 {
-background-color: lightyellow;
-  grid-column: 1 / span 2;
-  grid-row: 2;
+	background-color: lightyellow;
+  grid-column: 2;
+  grid-row: 1 / span 2;
 }
 .caja3 {
-background-color: orange;
+	background-color: orange;
 }
-.caja11 {
-	grid-column: 2 / span 2;
-    grid-row: 5;
-} 
+ .caja10{
+ grid-column: 3;
+ grid-row: 3 / span 2;
+}
 .caja12 {
-  grid-column: 1 / span 3;
-  grid-row: 6;
   background-color: #35B2AB;
 }
