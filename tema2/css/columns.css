@@ -2,13 +2,16 @@ body{
 	background-color: antiquewhite;
     text-align: center;
     font-family: Arial;
+    margin: 0% auto;
 }
 .cajapadre {
+  width: 80%;
+  height: 80%;
   display: grid;
   background-color: lightgreen;
   padding: 10px;
-  right: 10px;
-  left: 10px;
+  margin: 0% auto;
+  line-height: 150px;
   border: 1px solid black;
 }
 .cajas {
