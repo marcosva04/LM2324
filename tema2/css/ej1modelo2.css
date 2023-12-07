@@ -1,38 +1,100 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&display=swap');
-body{
-    font-family: 'Open Sans', sans-serif;
-    background-color: #970043;
+* {
     box-sizing: border-box;
-    justify-content: space-between;
-}
-p::first-letter {
-    font-size: 200%;
-    color: black;
-    font-weight:bold;
   }
-header{
+  h2 {
+      margin: 0;
+  }
+  body {
+    font-family: 'Open Sans', Helvetica, sans-serif;
+    background-color: #970043;
+    height: 100vh;
+  }
+  
+  .header {
     background-color: #ffd100;
+    padding: 20px;
     text-align: center;
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-    order: 1;
-    padding: 5px;
-}
-#aside1{
+    font-size: x-large;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+  
+  /* Contenedores flexibles */
+  .row {
+    display: -webkit-flex;
     display: flex;
-    justify-content: space-between;
-}
-main{
+  }
+  
+  /* Create three unequal columns that sits next to each other */
+  .column {
+    padding: 10px;
+    background-color:#970043;
+  }
+
+  /* Columnas laterales */
+  .column.side {
+     -webkit-flex: 1;
+     -ms-flex: 1;
+     flex: 1;
+     align-content: center;
+     justify-content: center;
+     text-align: center;
+     margin-top: auto;
+     margin-bottom: auto;
+  }
+  img {
+      max-width:100%;
+  }
+  .foto {
+      max-width:100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+  }
+  /* Columna central */
+  .column.middle {
+    -webkit-flex: 2;
+    -ms-flex: 2;
+    flex: 2;
+    overflow: auto;
     background-color: #f2f2f2;
-    justify-content: space-between;   
-}
-#aside2{
-    display: flex;
-    justify-content: space-between;
-}
-footer{
+    height:100vh;
+  }
+  .column.middle:hover {
+      -webkit-flex: 2;
+      -ms-flex: 2;
+      flex: 2;
+      overflow: auto;
+      background-color: #970043;
+      color: #f2f2f2;
+  }
+
+  p {
+      margin: 0 auto;
+  }
+  p::first-letter {
+      font-size: 1.5rem;
+      font-weight: bold;
+  }
+  
+  a {
+      text-decoration: none;
+      font-weight: bold;
+      cursor:help;
+      color:#ffd100
+  }
+  .footer {
     background-color: #ffd100;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    padding: 10px;
     text-align: center;
-}
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+  .footer a{
+      color:black;
+  }
+  @media (max-width: 768px) {
+    .row {
+      -webkit-flex-direction: column;
+      flex-direction: column;
+    }
+  }
