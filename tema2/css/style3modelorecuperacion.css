@@ -1,0 +1,28 @@
+body{
+    display: flex;/* documento flexible */
+    margin: 0;/* sin margen */
+}
+header{
+    background-color: darkgray;/* color de fondo */
+    text-align: center;/* alineación al centro */
+    order: 1;
+}
+main{
+    background-color: white;/* color de fondo */
+    font-family: "Century Gothic", helvetica, arial, sans-serif;/* tipo de letra */
+    font-size: 1.1rem;/* tamaño de tipografia */
+    order: 2;
+}
+footer{
+    background-color: darkgoldenrod;/* color de fondo */
+    text-align: center;/* alineación al centro */
+    order: 3;
+}
+nav{
+    background-color: darkcyan;
+    cursor: progress;
+    width: 15em;
+}
+p::first-letter{
+    background-color: white;
+}
