@@ -53,12 +53,13 @@ section{
     font: white;
 }
 #imagen{
-    width: 200px;
-    height: 200px;
     float: left;
-    border: goldenrod 5px;
+    border: 5px solid goldenrod ;
     border-radius: 2vh;
-    max-height: 100%;
+    max-width: 100%;
+    margin-top: 1.1vw;
+    margin-right: 2vw;
+
 }
 p::first-letter{
     color: darkgray;
