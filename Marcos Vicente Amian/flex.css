@@ -1,0 +1,36 @@
+body{
+    display: flex;
+    background-image: url('bg.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    color: black;
+    font-size: 200%;
+    width: 80%;
+    position: absolute;
+    float: center;
+    transform: (-50%,-50%);
+    left: (-50%,-50%);
+    right: (-50%,-50%);
+    justify-content: center;
+}
+input{
+    margin: 10px;
+    border: 0;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #E6E6E6;
+}
+#enviar{
+    position: relative;
+    background-color: #3759e2;
+    color: #fff;
+    box-shadow: 8px rgba(226, 209, 12, 0.35);
+}
+#enviar:hover{
+    background-color: #3759e2;
+    color: #fff;
+}
+.conborde:hover{
+    border: #3759e2;
+}
