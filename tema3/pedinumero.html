@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suma de numeros</title>
+</head>
+<body>
+    <h1>Calculaperri chaval</h1>
+    <label for="">Numero1</label>
+    <input type="text" id="numero1">
+    <label for="">Numero2</label>
+    <input type="text" id="numero2">
+    <button onclick="resultadosuma()">Suma</button>
+    <button onclick="resultadoresta()">Resta</button>
+    <button onclick="resultadomultiplicacion()">Multiplicacion</button>
+    <button onclick="resultadodivision()">División</button>
+    <script>
+        function resultadosuma(){
+            var numero1 = parseInt (document.getElementById("numero1").value);
+            var numero2 = parseInt (document.getElementById("numero2").value);
+            resultadosuma = numero1 + numero2;
+            alert(resultadosuma);
+        }
+        function resultadoresta(){
+            var numero1 = parseInt (document.getElementById("numero1").value);
+            var numero2 = parseInt (document.getElementById("numero2").value);
+            resultadoresta = numero1 - numero2;
+            alert(resultadoresta);
+        }
+        function resultadomultiplicacion(){
+            var numero1 = parseInt (document.getElementById("numero1").value);
+            var numero2 = parseInt (document.getElementById("numero2").value);
+            resultadomultiplicacion = numero1 * numero2;
+            alert(resultadomultiplicacion);
+        }
+        function resultadodivision(){
+            var numero1 = parseInt (document.getElementById("numero1").value);
+            var numero2 = parseInt (document.getElementById("numero2").value);
+            resultadodivision = numero1 / numero2;
+            alert(resultadodivision);
+        }
+    </script>
+
+</body>
+</html>
