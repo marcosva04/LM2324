@@ -15,30 +15,31 @@
     <button onclick="resultadoresta()">Resta</button>
     <button onclick="resultadomultiplicacion()">Multiplicacion</button>
     <button onclick="resultadodivision()">División</button>
+    <p id="resultado"></p>
     <script>
         function resultadosuma(){
-            var numero1 = parseInt (document.getElementById("numero1").value);
-            var numero2 = parseInt (document.getElementById("numero2").value);
-            resultadosuma = numero1 + numero2;
-            alert(resultadosuma);
+            var numero1 = parseFloat (document.getElementById("numero1").value);
+            var numero2 = parseFloat (document.getElementById("numero2").value);
+            document.getElementById("resultado").innerHTML = numero1+numero2;
         }
         function resultadoresta(){
-            var numero1 = parseInt (document.getElementById("numero1").value);
-            var numero2 = parseInt (document.getElementById("numero2").value);
-            resultadoresta = numero1 - numero2;
-            alert(resultadoresta);
+            var numero1 = parseFloat (document.getElementById("numero1").value);
+            var numero2 = parseFloat (document.getElementById("numero2").value);
+            document.getElementById("resultado").innerHTML = numero1-numero2;
         }
         function resultadomultiplicacion(){
-            var numero1 = parseInt (document.getElementById("numero1").value);
-            var numero2 = parseInt (document.getElementById("numero2").value);
-            resultadomultiplicacion = numero1 * numero2;
-            alert(resultadomultiplicacion);
+            var numero1 = parseFloat (document.getElementById("numero1").value);
+            var numero2 = parseFloat (document.getElementById("numero2").value);
+            document.getElementById("resultado").innerHTML = numero1*numero2;
         }
         function resultadodivision(){
-            var numero1 = parseInt (document.getElementById("numero1").value);
-            var numero2 = parseInt (document.getElementById("numero2").value);
-            resultadodivision = numero1 / numero2;
-            alert(resultadodivision);
+            var numero1 = parseFloat (document.getElementById("numero1").value);
+            var numero2 = parseFloat (document.getElementById("numero2").value);
+            document.getElementById("resultado").innerHTML = numero1/numero2;
+            if (numero2==0)
+                alert("No se puede dividir entre cero")
+            else
+                document.getElementById("resultado").innerHTML = numero1/numero2;
         }
     </script>
 
