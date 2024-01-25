@@ -10,8 +10,12 @@
     <h2>Operaciones con números reales</h2>
     <input type="text" id="numeroReal" placeholder="Introduzca un número real">
     <button onclick="anadirElemento()">Añadir elementos</button>
-    <button onclick="sumar()">Sumar elementos</button>
-    <button onclick="multiplicar()">Multiplicar elementos</button>
+    
+
+    <button onclick="realizarOperacion('Sumar')">Sumar elementos</button>
+    <button onclick="realizarOperacion('Multiplicar')">Multiplicar elementos</button>
+    <p>Array actual: <span id="arrayDisplay"></span></p>
     <p id="resultado"></p>
+
 </body>
 </html>
