@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validar Formulario</title>
+    <script src="validacampos.js"></script>
+    <style>
+        .error{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+ 
+        <label for="">Nombre: </label> <span class="error" id="campo1"> <input id="nombre" type="text" ></span>
+        <label for="">Apellidos: </label> <span class="error" id="campo2"> <input id="apellido" type="text"></span>
+        <label for="">Email: </label> <span class="error" id="campo3"> <input id="email" type="email"></span>
+        <label for="">Password: </label> <span class="error" id="campo4"> <input id="password" type="password"></span>
+        <label for="">Acepta política de privacidad: </label> <span class="error" id="campo5"> <input id="verificacion" type="checkbox"></span>
+       <button onclick="validar(document.getElementsByTagName ('input'))">Validar</button>
+   
+</body>
+</html>
