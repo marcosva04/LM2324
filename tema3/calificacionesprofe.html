@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcula de calificaciones</title>
+    <style>
+        #aviso{
+            color: red;
+        }
+    </style>
+    <script src="calificacionesprofe.js"></script>
+</head>
+<body>
+    <h1>Calificaciones del ciclo</h1>
+    <input type="text" id="numero">
+    <p id="aviso"></p>
+    <p id="notas"></p>
+    <p id="resultado"></p>
+    <button onclick="anadir()">Añadir calificaciones</button> <!-- Aquí iré mostrando las calificaciones introducidas-->
+    <button onclick="borrar()">Borrar calificaciones</button><!-- Aquí mostraré el resultado del calcula de la media-->
+    <button onclick="calcularMedia()">Calcular media</button>
+</body>
+</html>
