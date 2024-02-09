@@ -5,8 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Devuelta de número mayor</title>
     <script src="mayorelemento.js"></script>
+    <script>
+        var listaNumeros=[]; //Vector
+        function anadir(){
+            let numero = parseFloat(document.getElementById("numero").value);
+            listaNumeros.push(numero);
+            document.getElementById("numeros").innerHTML = listaNumeros;
+        }
+    </script>
 </head>
 <body>
-    
+    <h1>Cáculo del elemento mayor de un array</h1>
+    <input type="text" id="numero" placeholder="Introduce número">
+    <p id="numeros"></p>
+    <p id="resultado"></p>
+    <button onclick="imprimir(listaNumeros)">Imprimir números</button>
+    <button onclick="anadir();">Añadir números</button>
+    <button onclick="var maximo=mayor(listaNumeros);document.getElementById('resultado').innerHTML=maximo">Calcular mayor</button>
+    <button onclick="var minimo=menor(listaNumeros);document.getElementById('resultado').innerHTML=minimo">Calcular menor</button>
 </body>
 </html>

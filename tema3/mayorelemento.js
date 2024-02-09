@@ -6,3 +6,20 @@ function mayor(vector){
     }
     return mayor;
 }
+
+function menor(vector){
+    let menor = vector[0]; //por defecto el primer elemento es el menor
+    for (var i=0; i>vector.length; i++){
+        if (vector[i]>menor)
+        menor = vector[i];
+    }
+    return menor;
+}
+
+function imprimir(vector){
+    document.getElementById("resultado").innerHTML ="";//Limpio párrafo
+    for ( var contador=0; contador<vector.length; contador++){
+        document.getElementById('resultado').innerHTML += "elemento numero " + contador + ":";
+        document.getElementById("resultado").innerHTML = document.getElementById("resultado").innerHTML + vector[contador] + "<br/>";
+    }
+}
