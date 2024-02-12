@@ -29,7 +29,8 @@ div#examen
     pregunta=preguntas[pos][0];
     chA=preguntas[pos][1];
     chB=preguntas[pos][2];
-    chC=preguntas[pos][3];test.innerHTML="<h3>"+pregunta+"</h3>";
+    chC=preguntas[pos][3];
+    test.innerHTML="<h3>"+pregunta+"</h3>";
     test.innerHTML+="<input type='radio' name='opciones' value='A'> "+chA+"<br>";
     test.innerHTML+="<input type='radio' name='opciones' value='B'> "+chB+"<br>";
     test.innerHTML+="<input type='radio' name='opciones' value='C'> "+chC+"<br><br>";
@@ -38,7 +39,7 @@ div#examen
         if(opciones[i].checked){opcion=opciones[i].value}}
         if(opcion==preguntas[pos][4]){correctas++}pos++;
         
-    hacerPregunta()}window.addEventListener("load",hacerPregunta,false);
+    hacerPregunta()}window.addEventListener("load", hacerPregunta, false);
 </script>
 </head>
 <body>
