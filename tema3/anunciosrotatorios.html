@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anuncios Rotatorios</title>
+</head>
+<body>
+    <h1>Anuncios Rotatorios</h1>
+    <img id="demo" src="../images/banner0.png" onclick="pulsa()">
+    <script>
+        var myArray=['../images/banner0.png', '../images/banner1.png', '../images/banner2.png', '../images/banner3.png', '../images/banner4.png', '../images/banner5.png'];
+        let myTimeout = setTimeout(myGreeting, 3000);
+        
+        function myGreeting() {
+          document.getElementById("demo").innerHTML = myArray;
+        }
+    </script>
+</body>
+</html>
