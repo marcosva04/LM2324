@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publicidad</title>
+   
+</head>
+<body>
+    
+    <img src="../images/banner0.png" id="fotoActual" onclick="pulsa()">
+
+    <script>
+            var enlaces=[
+            "https://store.dsautomobiles.es/configurable", 
+            "https://www.elcorteingles.es/supermercado/", 
+            "https://www.elcorteingles.es/daitsu/electrodomesticos/aire-acondicionado/", 
+            "https://www.madridhifi.com",
+            "https://launidad.movistarplus.es/?dis_c=331187589&dclid=CL-Lt9zx4_YCFdZEHQkdLpkExQ",
+            "https://www.tikamoon.es",
+            ];
+            var indice=0;
+            var fotosTotal = 6;
+        function publicidad(){
+            const myTimeout = setTimeout(siguiente, 3000);
+
+        }
+
+        function siguiente(){
+                
+                if (indice==fotosTotal-1){
+                    indice=0 ; 
+                }
+                else
+                {
+                    indice=indice+1;        
+                }
+                document.getElementById("fotoActual").src =  "../images/banner"+indice+".png";
+                
+                publicidad();
+        }
+        function pulsa(){
+           
+            window.open(enlaces[indice]);
+            
+            switch(indice){
+                case 0: window.open("https://store.dsautomobiles.es/configurable"); break;
+                case 1: window.open("https://www.elcorteingles.es/supermercado/"); break;
+                case 2: window.open("https://www.elcorteingles.es/daitsu/electrodomesticos/aire-acondicionado/"); break;
+                case 3: window.open("https://www.madridhifi.com"); break;
+                case 4: window.open("https://launidad.movistarplus.es/?dis_c=331187589&dclid=CL-Lt9zx4_YCFdZEHQkdLpkExQ"); break;
+                case 5: window.open("https://www.tikamoon.es"); break;
+
+            }
+            
+
+            /*
+            if(indice == 0){
+                window.open("https://store.dsautomobiles.es/configurable");
+            }
+            else if(indice == 1){
+                window.open("https://www.elcorteingles.es/supermercado/");
+            }
+            else if(indice == 2){
+                window.open("https://www.elcorteingles.es/daitsu/electrodomesticos/aire-acondicionado/");
+            }
+            else if(indice == 3){
+                window.open("https://www.madridhifi.com");
+            }
+            else if(indice == 4){
+                window.open("https://launidad.movistarplus.es/?dis_c=331187589&dclid=CL-Lt9zx4_YCFdZEHQkdLpkExQ");
+            }
+            else if(indice == 5){
+                window.open("https://www.tikamoon.es"); 
+            }
+            */
+        }
+        window.onload = publicidad();
+    </script>
+</body>
+</html>

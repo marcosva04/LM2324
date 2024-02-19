@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uso de createElement y appendChild</title>
+</head>
+<body>
+    <p>Añadir elementos a una lista con document.CreateElement y appendChild</p>
+    <ul id="lista"></ul>
+
+    <script>
+
+        for (let i = 1; i <= 20; i++) {
+            var lista = document.getElementById("lista");
+            var elemento = document.createElement("li");
+            elemento.textContent = "Fichero " + (lista.children.length + 1);
+            lista.appendChild(elemento);
+        }
+
+     
+    </script>
+</body>
+</html>
