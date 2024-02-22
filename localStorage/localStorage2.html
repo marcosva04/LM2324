@@ -13,18 +13,22 @@
     <script>
         function temaClaro(){
             document.getElementById("texto").style.color = '#000000';
-            document.body.style.backgroundColor = "#FFFFFF";
+            document.body.style.backgroundColor = '#FFFFFF';
         }
 
         function temaOscuro(){
             document.getElementById("texto").style.color = '#FFFFFF';
-            document.body.style.backgroundColor = "#000000";
+            document.body.style.backgroundColor = '#000000';
         }
 
         function guardar(){
-            var valor = localStorage.getItem("informacion");
-            valor = document.body.style.backgroundColor = "#000000";
-            valor = document.getElementById("texto").style.color = '#FFFFFF';
+            var valor = localStorage.getItem("texto");
+            if (valor=temaClaro()){
+                window.onload = temaClaro();
+            }
+            if (valor=temaOscuro()){
+                window.onload = temaOscuro();
+            }
         }
         window.onload = guardar();
     </script>
