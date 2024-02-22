@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalStorage 1</title>
+</head>
+<body>
+    <input id="info" type="text" placeholder="Escribe algo">
+    <button onclick="guardar()">Guardar</button>
+    <button onclick="borrar()">Borrar</button>
+    <p></p>
+    
+    <script>
+        function cargaPagina(){
+            var valor = localStorage.getItem("informacion")
+            if (valor!=null){
+                alert("Bienvenido "+valor); /* Dar l bienvenida al recargar la página si hay un valor guardado */
+            }
+        }
+        function guardar(){
+            var info = document.getElementById("info").value;
+            localStorage.setItem("informacion", info); /* Guardar información en el navegador */
+        }
+
+        function borrar(){
+            localStorage.clear(); /* Borrar almacenamiento local */
+        }
+        window.onload = cargaPagina();
+    </script>
+
+</body>
+</html>

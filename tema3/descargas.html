@@ -10,15 +10,17 @@
     <ul id="lista"></ul>
 
     <script>
+        function crearPagina(){
 
-        for (let i = 1; i <= 20; i++) {
+        for (var i = 1; i <= 20; i++) {
             var lista = document.getElementById("lista");
             var elemento = document.createElement("li");
-            elemento.textContent = "Fichero " + (lista.children.length + 1);
+            elemento.innerHTML = "<a href='../ficheros/fichero"+i+".pdf' target='_blank'>Fichero " + (lista.children.length + 1)+"<img width='25' src='../images/download.png'></a>";
             lista.appendChild(elemento);
         }
 
-     
+    }
+    window.onload = crearPagina();
     </script>
 </body>
 </html>

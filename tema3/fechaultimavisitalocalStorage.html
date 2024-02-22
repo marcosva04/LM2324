@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visitas a esta página</title>
+</head>
+<body>
+    <p id="texto"></p>
+      <script>
+    
+        function cargaPagina(){
+            var visitas = localStorage.getItem("ultimaFechaHora");
+            var hoy = new Date();
+            var ahora = hoy.toLocaleString();
+            if (visitas!=null){
+            
+                // Se conectó alguna vez
+                document.getElementById("texto").innerHTML="Se conectó la última vez el día "+visitas;
+            } 
+            else {
+                
+                // Es la primera vez que se conecta
+                document.getElementById("texto").innerHTML="Hasta ahora mismo, nunca se había conectado";
+            } 
+            localStorage.setItem("ultimaFechaHora",ahora);
+        }
+
+        window.onload = cargaPagina();
+    </script>
+</body>
+</html>
