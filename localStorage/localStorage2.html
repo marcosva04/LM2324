@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambio de Tema</title>
+</head>
+<body>
+    <p id="texto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa ipsam amet dicta ullam nihil quidem ea officia velit, corporis id totam ex voluptatibus dolorum error quae provident dolorem deserunt quibusdam.     
+    </p>
+    <button onclick="temaClaro()">Tema claro</button>
+    <button onclick="temaOscuro()">Tema oscuro</button>
+    <script>
+        function temaClaro(){
+            document.getElementById("texto").style.color = '#000000';
+            document.body.style.backgroundColor = "#FFFFFF";
+        }
+
+        function temaOscuro(){
+            document.getElementById("texto").style.color = '#FFFFFF';
+            document.body.style.backgroundColor = "#000000";
+        }
+
+        function guardar(){
+            var valor = localStorage.getItem("informacion");
+            valor = document.body.style.backgroundColor = "#000000";
+            valor = document.getElementById("texto").style.color = '#FFFFFF';
+        }
+        window.onload = guardar();
+    </script>
+</body>
+</html>
