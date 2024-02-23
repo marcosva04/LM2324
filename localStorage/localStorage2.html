@@ -12,22 +12,26 @@
     <button onclick="temaOscuro()">Tema oscuro</button>
     <script>
         function temaClaro(){
-            document.getElementById("texto").style.color = '#000000';
-            document.body.style.backgroundColor = '#FFFFFF';
+            document.getElementById("texto").style.color = "black";
+            document.body.style.backgroundColor = "white";
+            localStorage.setItem("fondo", "white");
         }
 
         function temaOscuro(){
-            document.getElementById("texto").style.color = '#FFFFFF';
-            document.body.style.backgroundColor = '#000000';
+            document.getElementById("texto").style.color = "white";
+            document.body.style.backgroundColor = "black";
+            localStorage.setItem("fondo", "black");
         }
 
         function guardar(){
-            var valor = localStorage.getItem("texto");
-            if (valor=temaClaro()){
-                window.onload = temaClaro();
+            let valor = localStorage.getItem("fondo");
+            if (valor == "black"){
+                document.getElementById("color").style.backgroundColor= "black";
+                document.getElementById("color").style.color = "white";
             }
-            if (valor=temaOscuro()){
-                window.onload = temaOscuro();
+            else {
+                document.getElementById("color").style.backgroundColor= "white";
+                document.getElementById("color").style.color = "black";
             }
         }
         window.onload = guardar();
