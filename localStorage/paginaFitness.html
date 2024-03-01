@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Fitness</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        img{
+            width: 30%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bienvenido a tu página de Fitness</h1>
+    <h2>Pronto estarás como él:</h2>
+    <img src="../images/fitness.jpg" alt="Da por hecho que es lo que quieres ser"><br>
+    <input type="text" placeholder="Introduce tu peso en kg" id="pesoActual">
+    <button onclick="guardar()">Guardar peso</button>
+    <p id="parrafo"></p>
+    <script>
+        let pesoAnterior=100000; // Valor inicial
+        function guardar(){
+            let pesoActual = document.getElementById("pesoActual").value;
+            if (pesoActual!=""){
+                // Tiene algo
+                localStorage.setItem("peso", pesoActual);
+                if (pesoActual>pesoAnterior){
+                    document.getElementById("parrafo").innerHTML = "Hay que reducir carbohidratos"
+                }
+                if (pesoActual==pesoAnterior)
+                {
+                    document.getElementById("parrafo").innerHTML = "Pesas lo mismo que la última vez"
+                }
+                if (pesoActual<pesoAnterior)
+                {
+                    document.getElementById("parrafo").innerHTML = "¡Sigue así!";
+                }
+            }
+            else{
+                document.getElementById("parrafo").innerHTML = "Tienes que introducir tu peso en kg"
+            }
+        }
+        function cargar(){
+            var almacenado = localStorage.getItem("peso");
+            if (almacenado!=null)
+            {
+                pesoAnterior = parseFloat(almacenado);
+                document.getElementById("parrafo").innerHTML="Tu peso anterior era de " + pesoAnterior + "kg"
+            }
+        }
+        window.onload=cargar();
+    </script>
+</body>
+</html>
