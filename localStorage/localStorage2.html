@@ -11,30 +11,35 @@
     <button onclick="temaClaro()">Tema claro</button>
     <button onclick="temaOscuro()">Tema oscuro</button>
     <script>
+        let temaAnterior = localStorage.getItem("fondo");
         function temaClaro(){
             document.getElementById("texto").style.color = "black";
             document.body.style.backgroundColor = "white";
-            localStorage.setItem("fondo", "white");
+            localStorage.setItem("fondowhite", fondo);
         }
 
         function temaOscuro(){
             document.getElementById("texto").style.color = "white";
             document.body.style.backgroundColor = "black";
-            localStorage.setItem("fondo", "black");
+            localStorage.setItem("fondoblack", fondo);
         }
 
-        function guardar(){
-            let valor = localStorage.getItem("fondo");
-            if (valor == "black"){
-                document.getElementById("color").style.backgroundColor= "black";
-                document.getElementById("color").style.color = "white";
+        function cargar(){
+            var almacenado = localStorage.getItem("fondo");
+            if (almacenado==white)
+            {
+                document.getElementById("texto").style.color = "black";
+                document.body.style.backgroundColor = "white";
             }
-            else {
-                document.getElementById("color").style.backgroundColor= "white";
-                document.getElementById("color").style.color = "black";
+            if (almacenado == black)
+            {
+                document.getElementById("texto").style.color = "white";
+                document.body.style.backgroundColor = "black";
             }
         }
-        window.onload = guardar();
+        window.onload=cargar();
+    
+        
     </script>
 </body>
 </html>
