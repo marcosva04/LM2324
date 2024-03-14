@@ -13,10 +13,11 @@
     <p id="letra"></p>
     <script>
         function validar(){
-            let dni = "dni";
+            let dni = document.getElementById("dni").value;
             let posibleLetra;
 
-            dni%23 == posibleLetra;
+            dni%23 === posibleLetra;
+            if(dni!=""){
 
             switch (posibleLetra) {
                  case A:
@@ -101,8 +102,15 @@
                     document.getElementById("letra").innerHTML = "Su DNI completo es " + dni+posibleLetra;
                     break;
                     }
+                }
+
+             else{
+                document.getElementById("letra").innerHTML = "Debe introducir un valor numérico";
+             }   
+            
         }
                 
+        window.onload=validar();
     </script>
 </body>
 </html>
