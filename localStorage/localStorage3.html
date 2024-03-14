@@ -27,13 +27,13 @@
             localStorage.setItem("problemas", cadena);
         }
         function cargarPagina(){
-            let cadenaTareas = localStorage.getItem("problemas")
+            var cadenaTareas = localStorage.getItem("problemas")
             if (cadenaTareas!=null){
                 // Tengo tareas pendientes
-                var elemento = document.createElement("li");
-                var lista = document.getElementById("lista");
-                elemento.textContent = cadenaTareas;
-                lista.appendChild(elemento);
+
+                listaElementos = parseFloat(cadenaTareas);
+                document.getElementById("lista").innerHTML= listaElementos
+
             }
             else{
                 // No tengo nada
