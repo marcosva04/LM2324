@@ -1,0 +1,31 @@
+.cajas {
+    display:flex;
+    justify-content: space-around;
+  }
+  .botonera {
+    display:flex;
+    justify-content:space-evenly;
+  }
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
+    transition: 0.5s;
+    width: 20%;
+  }
+  .card:hover {
+    box-shadow: 0 10px 20px 0 rgba(0,0,0,0.5);
+  }
+  .container {
+    padding: 2px 16px;
+  }
+  .centrada{
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+  }
+  input {
+      text-align:center;
+      width:15%;
+  }
+  button {
+      width: 10%;
+  }
