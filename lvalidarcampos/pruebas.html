@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validación de campos</title>
+    <style>
+        .error{
+            color: red;
+        }
+    </style>
+</head>
+<body>  
+    
+    <label>Usuario: </label>
+    <input type="text" name="usuario" id="usuario" placeholder="Escriba su nombre de usuario"><span class="error" id="campo1"></span><br>
+
+    <label>Contraseña: </label>
+    <input type="password" name="contrasena" id="contrasena" placeholder="Escriba su contraseña"><span class="error" id="campo2"></span><br>
+
+    <label>Confirmar contraseña: </label>
+    <input type="password" name="contrasena2" id="contrasena2" placeholder="Confirme su contraseña"><span class="error" id="campo3"></span><br>
+
+    <button onclick="validar(document.getElementsByTagName('input'))">Validar</button>
+
+<script>
+       
+    function validar(){
+        if(usuario==""){
+            document.getElementById("campo1").innerHTML = "Debe de rellenar el campo usuario";
+        }
+
+        if(contrasena.length < 8){
+            document.getElementById("campo2").innerHTML = "La contraseña debe tener al menos 8 caracteres";
+        }
+
+        if(contrasena2!=contrasena){
+            document.getElementById("campo3").innerHTML = "Las contraseñas no coinciden";
+        }
+    }
+    
+</script>
+</body>
+</html>
