@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de distancia</title>
+</head>
+<body>
+    <h1>Calculadora de distancia</h1>
+    <input type="text" placeholder="Datos..." id="entrada">
+    <button onclick="calcular()">Calcula</button>
+
+    <script>
+
+        var numeros=[];
+        function calcular(numeros){
+
+            numeros = document.getElementById('entrada').value;
+            numeros.toString();
+            numeros.split(",");
+            
+            if(numeros!=""){
+                for (var i = 0; i<numeros.length; i++){
+                 var suma;
+                 suma = numeros[i]+numeros[i];
+                }
+                 alert ("La suma total es "+suma);
+            }
+
+            else{
+                alert("El valor introducido no es valido");
+            }
+
+        }
+        
+            
+            
+        
+    </script>
+</body>
+</html>
