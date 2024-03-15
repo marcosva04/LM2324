@@ -7,39 +7,45 @@
 </head>
 <body>
     <input type="text" placeholder="Escriba una tarea" id="tarea">
-    <ul id="lista"></ul>
+    <ul id="listaTareas"></ul>
     <button onclick="agregarElemento()">Agregar elemento</button>
     
     <script>
-        var listaElementos=[];
-        function agregarElemento(){
-            var tarea = document.getElementById("tarea").value;
-            var lista = document.getElementById("lista");
-            var elemento = document.createElement("li");
+        function agregarElemento() {
+        const tarea = document.getElementById('tarea').value;
+        if (tarea) {
+            const lista = document.getElementById('listaTareas');
+            const elemento = document.createElement('li');
             elemento.textContent = tarea;
+    
+            
             lista.appendChild(elemento);
-            problemas.push(elemento);
-            var cadena="";
-            for (var i=0; i<problemas.length; i++){
-                cadena = cadena + problemas[i].textContent + ",";
-            }
-            // Al finalizar el for, en cadena tengo mi lista de tareas
-            localStorage.setItem("problemas", cadena);
-        }
-        function cargarPagina(){
-            var cadenaTareas = localStorage.getItem("problemas")
-            if (cadenaTareas!=null){
-                // Tengo tareas pendientes
 
-                listaElementos = parseFloat(cadenaTareas);
-                document.getElementById("lista").innerHTML= listaElementos
-
-            }
-            else{
-                // No tengo nada
-            }
+            guardarTareas();
         }
-        window.onload = cargarPagina();
+    }
+
+    function guardarTareas() {
+        const tareas = [];
+        document.querySelectorAll('#listaTareas li').forEach(function(item) {
+            tareas.push(item.firstChild.textContent);
+        });
+        localStorage.setItem('tareas', JSON.stringify(tareas));
+    }
+
+    function cargarTareas() {
+        const tareas = JSON.parse(localStorage.getItem('tareas'));
+        if (tareas) {
+            const lista = document.getElementById('listaTareas');
+            tareas.forEach(function(tarea) {
+                const elemento = document.createElement('li');
+                elemento.textContent = tarea;
+                lista.appendChild(elemento);
+            });
+        }
+    }
+
+    window.onload = cargarTareas;
     </script>
 </body>
 </html>
