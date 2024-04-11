@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variadito</title>
+    <script src="jquery-3.7.1.js"></script>
+</head>
+<body>
+   <h1>Encabezado 1</h1>
+   <h1>Encabezado 2</h1>
+   <h1>Encabezado 3</h1>
+    <p>Lorem ipsum dolor <a href="" target="_blank" rel="noopener noreferrer"> sit amet </a> consectetur adipisicing elit. Commodi molestiae voluptatum deleniti maiores recusandae perferendis corporis in veritatis, quaerat maxime corrupti repudiandae rerum autem labore, voluptatibus, consequatur ducimus distinctio rem.</p>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto quo eaque dolore nam ipsam ad facere neque dicta quaerat inventore deleniti necessitatibus animi autem cupiditate officia, reiciendis enim velit quas.</p>
+    <img src="" alt="Es una foto">
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, doloremque eum reprehenderit inventore rerum autem quidem nulla ducimus eos assumenda iusto alias ab nihil blanditiis sapiente accusantium explicabo culpa exercitationem?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas adipisci magnam laboriosam, maiores perferendis harum, molestias officia amet deleniti minus, dolores quia. Error laboriosam illum tenetur, at deserunt veniam labore.</p>
+
+    <table>
+        <tr>
+            <th>Encabezados</th>
+            <th>Parrafos</th>
+            <th>enlaces</th>
+            <th>Imagenes</th>
+        </tr>
+        <tr>
+            <th id="encabe"></th>
+            <th id="parraf"></th>
+            <th id="enla"></th>
+            <th id="imga"></th>
+        </tr>
+
+    </table>
+    <button onclick="contar()">Contar</button>
+    <script>
+        var encabezado = 0
+        var Parrafos = 0
+        var enlaces = 0
+        var Imagenes = 0
+        function contar(){
+            $("#encabe").html(
+            $('h1,h2').length)
+
+            $("#parraf").html(
+            $('p').length)
+
+            $("#enla").html(
+            $('a').length)
+
+            $("#imga").html(
+            $('img').length)
+
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jquery2</title>
+    <script src="jquery-3.7.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("div").mouseenter(function(){
+                $("#ejemplo").hide();
+            });
+            $("div").mouseleave(function(){
+                $("#ejemplo").show();
+            })
+        });
+    </script>
+    <style>
+        div{
+            background-color: red;
+            width: 300px;
+            height: 300px;
+            color: whitesmoke;
+        }
+    </style>
+</head>
+<body>
+<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sequi at cupiditate et dolores, possimus hic, excepturi cumque sed dolorum quo id, consequatur deleniti! Sint perspiciatis velit ut neque et maiores.</p>
+<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Commodi at explicabo molestiae aperiam sunt cum nemo officia porro ea voluptatem, perspiciatis dolore, quos molestias. Asperiores at saepe ratione. Adipisci, nesciunt?</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta omnis aliquid optio quasi eius modi unde! Reiciendis minus sint, deleniti cupiditate numquam beatae harum sed voluptatem pariatur. Quidem, possimus placeat.</p>    
+
+<div>
+<p id="ejemplo">Si esto desaparece eres Lorenzo Serra Ferrer</p>
+</div>
+
+</body>
+</html>
