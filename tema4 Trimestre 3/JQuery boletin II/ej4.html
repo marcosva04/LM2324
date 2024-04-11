@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Cargar contenido con jQuery</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function(){
+  // Cargar contenido del archivo 1.txt en parrafo1
+  $("#parrafo1").load("1.txt");
+
+  // Cargar contenido de la caja contenedor del archivo 2.html en parrafo2
+  $("#parrafo2").load("2.html .caja-contenedor");
+});
+</script>
+</head>
+<body>
+
+<p id="parrafo1">Contenido del archivo 1.txt se cargará aquí...</p>
+<p id="parrafo2">Contenido de la caja contenedor del archivo 2.html se cargará aquí...</p>
+
+</body>
+</html>
