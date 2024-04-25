@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 7</title>
+    <script src="jquery-3.7.1.js"></script>
+</head>
+<body>
+    <h1>Encabezado</h1>
+    <img src="../../ArtistaMusical/image/azul.jpg" alt="">
+    <p id="primero">Lorem <a href="http://www.marca.com" target="_blank"> ipsum </a> dolor sit amet consectetur adipisicing elit. Cupiditate amet non laudantium eos quod consequuntur impedit quasi ut deserunt error ex perferendis vel, iure, id illo expedita libero magnam quo?</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam officiis vitae, sint obcaecati voluptatibus minus necessitatibus voluptate deleniti ipsa, dignissimos voluptatem fugiat rerum saepe, illum odio esse iste voluptas neque?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, mollitia? Voluptatem, quaerat ducimus fugiat veniam rem ea debitis reiciendis. Nobis ad nulla fuga fugiat maiores temporibus repellendus? Dicta, voluptas? Fuga?</p>
+    <button id="boton1">Obtener src de la imagen</button>
+    <button id="boton2">Obtener HTML del encabezado</button>
+    <button id="boton3">Obtener html de un párrafo</button>
+    <script>
+    $(document).ready(function(){
+        $("#boton1").click(function(){
+            alert("El src de la imagen es:"+$("img").attr("src"));
+        })
+        $("#boton2").click(function(){
+            alert("El html del encabezado es:"+$("h1").html());
+        })
+        $("#boton3").click(function(){
+            alert("El html del encabezado es:"+$("#primero").html());
+        })
+    });
+    
+    </script>
+</body>
+</html>
