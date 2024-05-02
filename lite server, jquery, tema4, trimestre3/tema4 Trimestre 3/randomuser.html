@@ -49,12 +49,13 @@
         </div>
     </div>
     <script> 
-    $("#btn-generico").click(function(){
+    $(document).ready(function () {
+        $("#btn-generico").click(function(){
         $.ajax({
             url: 'https://randomuser.me/api/',
             dataType: 'json',
-            success: function(datos) {
-                console.log(datos);
+            success: function(datos) { // respuesta
+                console.log(datos); // para la consola del navegador
                
                     
                     let img = datos.results[0].picture.medium;
@@ -143,6 +144,8 @@
 
         });
    });
+    });
+    
     </script>
 </body>
 

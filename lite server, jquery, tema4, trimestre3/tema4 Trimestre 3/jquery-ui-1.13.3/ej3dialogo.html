@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uso de Diálogos</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
+    <script>
+        $( function() {
+            $( "#dialogo" ).dialog({
+                autoOpen: false,
+                show: {
+                    effect: "blind",
+                    duration: 1000
+                },
+                hide: {
+                    effect: "explode",
+                    duration: 1000
+                }
+            });
+            $( "#btn-abrir" ).on( "click", function() {
+                $( "#dialogo" ).dialog( "open" );
+            });
+        } );
+    </script>
+</head>
+<body>
+    <h1>Ejemplo de diálogo</h1>
+    <div id="dialogo">
+        <p>Esto está oculto hasta que hagamos clic.</p>
+    </div>
+    <button id="btn-abrir">Abrir diálogo</button>
+    
+</body>
+</html>
