@@ -62,27 +62,34 @@
             <input type="number" name="codLibro" id="codLibro" min="1">
             <br>
             <label for="botones">Acción:</label>
-            <button id="btn-libro">Obtener libro</button>
-            <button id="btn-todos">Ver todos</button>
+            <button id="btn-libro">Consultar ID Libro</button>
+            <button id="btn-todos">Ver catálogo</button>
             <div id="resultados">
             </div>
         </div>
     </div>
     <script>
 
-$.ajax({
-            url: 'https://gutendex.com/books/',
-            dataType: 'json',
-            success: function(datos) {
-                console.log(datos);
-                 
-                },
-                
-                    error:function(error){
-                        $(".fullname").text("Ha habido un error al intentar obtener una respuesta del Servidor " + error.statusText + " " + error.status)
-                    }
+        $(document).ready(function () {
+            $("#btn-libro").clic(function () { 
+                let codlibro = $("#codlibro").val();
+                if (codlibro != ""){
+                    $.get("https://gutendex.com/books/"+codlibro).done(function(respuesta){
+                        console.log(respuesta);
+                        $("#resultados").append("<p>"+respuesta.title+"</p>")
+                        $("#resultados").append("<p>"+respuesta.authors[0].name+"</p>")
+                        $("#resultados").append("<img src='"+respuesta.formats('image/jpeg')+"'>")
+                    }).fail(function(){})
+                }
+                else{
+                    $("#resultados").append("Debe introducir un valor")
+                }
+             })
 
-                });
+             $("#btn-todos").clic(function () { 
+                
+            })
+        });
 
     </script>
 </body>
