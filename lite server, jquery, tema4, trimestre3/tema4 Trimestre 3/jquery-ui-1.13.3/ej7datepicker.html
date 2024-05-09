@@ -35,7 +35,7 @@
         $( "#fecha" ).datepicker({ 
             minDate: "+2" /*A partir de pasado mañana*/, maxDate: "+1D +1W"/*Hasta dentro de ocho días*/,  beforeShowDay: function(d){
                 var day = d.getDay();
-                return[(day != 3)]; // Todos menos los miercoles (3)
+                return[(day != 6)]; // Todos menos los miercoles (3)
             } 
         
         });
