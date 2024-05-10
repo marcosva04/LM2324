@@ -3,42 +3,47 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pelicula</title>
+    <title>Libros</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
   <body>
-    <h1>Pelicula aleatoria</h1>
-    <input type="text" id="titulo"><br>
+    <h1>Búsqueda de libros</h1>
+    <input type="text" id="libro"><br>
     <button id="mostrar">Mostrar</button><br>
-        <p id="pelicula"></p>
+        <p id="datos"></p>
     </div>
     <script>
         /* Completar el código jQuery aquí */
         $(document).ready(function(){
             $("#mostrar").click(function(){
             
-        var apiKey = '668f4ef4';
-        var titulo = $("#titulo").val();
+        var libro = $("#libro").val();
+        var api = 'AIzaSyBy3BDrPhUEJ_uaHJABy9URahVzb2no9Zg';
         
         $.ajax({
-          url: 'https://www.omdbapi.com/?apikey=' + apiKey + '&t=' + titulo,
+          url: 'https://www.googleapis.com/books/v1/volumes?q=intitle:' + libro + '&key=' + api,
           type: 'GET',
           success: function(response){
             
-            $("#pelicula").text("Información sobre: " + titulo);
-            $("#pelicula").empty();
-            $("#pelicula").append("Título de la película: "+ response.Title + "<br>");
-            $("#pelicula").append("Fecha lanzamiento: "+ response.Released + "<br>");
-            $("#pelicula").append("Duración: "+ response.Runtime + "<br>");
-            $("#pelicula").append("Género: "+ response.Genre + "<br>");
-            $("#pelicula").append("Director: "+ response.Director + "<br>");
+            $("#datos").append("Información sobre: " + libro);
+            $("#datos").empty(); 
+            $("#datos").append("Título: "+ response.items[0].volumeInfo.title + "<br>");
+            $("#datos").append("Artículos: "+ response.totalItems + "<br>");
+
+            
+            $("#datos").append("ID: "+ response.items[0].id + "<br>");
+            $("#datos").append("Autor: "+ response.items[0].volumeInfo.authors[0] + "<br>");
+            $("#datos").append("Fecha lanzamiento: "+ response.items[0].volumeInfo.publishedDate + "<br>");
+            $("#datos").append("Precio: "+ response.items[0].volumeInfo.publishedDate + "<br>");
+            
+
 
 
           },
           error: function(error){
-            $("#pelicula").text("Error al obtener la pelicula: " + error);
+            $("#datos").text("Error al obtener el libro: " + error);
           }
         });
       });

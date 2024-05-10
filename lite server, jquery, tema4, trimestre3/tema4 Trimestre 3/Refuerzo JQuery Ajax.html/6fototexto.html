@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foto por texto</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    
+</head>
+<body>
+    <h1>Foto por texto</h1>
+    <input type="text" placeholder="Escriba un texto" id="texto">
+    <button id="generar">Buscar</button><br>
+     <div id="foto"></div><br>
+
+<script>
+    $(document).ready(function(){
+        $("generar").click(function(){
+            
+            var texto = $("#texto").val();
+            var api = '3b9f4bb575eaeab39c545d5335299472'
+
+            $.ajax({
+
+                url:'https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=' + api + '&text=' + texto,
+                dataType:'json',
+                success:function(response){
+
+                    $("#foto").empty();
+
+                    for(var i=0; i<response.photos.photo.length; i++){
+                       
+                        var farm_id= response.photos.photo[i].farm;
+                        var server_id= response.photos.photo[i].server;
+                        var id= response.photos.photo[i].id;
+                        var secret= response.photos.photo[i].secret;
+                        var url_Tex_Img = "https://farm"+ farm_id +".staticflickr.com/"+ server_id +"/"+ id +"_"+ secret +".jpg"
+                        $("#foto").append("<div id='img'><img src=" + url_Tex_Img + ">"+"</div>")
+                    }
+
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
