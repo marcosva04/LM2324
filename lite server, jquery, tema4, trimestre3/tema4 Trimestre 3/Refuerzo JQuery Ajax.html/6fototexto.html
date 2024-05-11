@@ -11,7 +11,7 @@
     <h1>Foto por texto</h1>
     <input type="text" placeholder="Escriba un texto" id="texto">
     <button id="generar">Buscar</button><br>
-     <div id="foto"></div><br>
+     <img src="" id="foto">
 
 <script>
     $(document).ready(function(){
@@ -22,13 +22,15 @@
 
             $.ajax({
 
-                url:'https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=' + api + '&text=' + texto,
+                url:'https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=' + api + '&text=' + texto + '&format=json&nojsoncallback=1',
                 dataType:'json',
                 success:function(response){
 
                     $("#foto").empty();
 
-                    for(var i=0; i<response.photos.photo.length; i++){
+                    for(var i=0; i<response.photos.photo.length; i++){ /* bucle para coger todas las que haya */
+                                                                        /* si quisiesemos coger solo 4 pondríamos: 
+                                                                        for(var i=0; i<4; i++) */
                        
                         var farm_id= response.photos.photo[i].farm;
                         var server_id= response.photos.photo[i].server;
@@ -38,6 +40,10 @@
                         $("#foto").append("<div id='img'><img src=" + url_Tex_Img + ">"+"</div>")
                     }
 
+                },
+
+                    error: function(error){
+                        $("#foto").text("Error al obtener la foto: " + error);
                 }
             });
         });
