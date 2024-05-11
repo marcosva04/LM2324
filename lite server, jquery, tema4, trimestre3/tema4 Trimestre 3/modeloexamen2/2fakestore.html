@@ -65,6 +65,11 @@
             background-color: #545662;
             opacity: 0.8;
         }
+
+        #foto{
+            height: 100px;
+            width: 100px;
+        }
     </style>
 </head>
 
@@ -96,7 +101,6 @@
         $("#btn-producto").click(function(){
 
                 var id = $("#codProducto").val();
-                $("#resultados").text(""); 
 
             $.ajax({
 
@@ -109,6 +113,10 @@
 
                 var photo = datos.image;
                 $("#foto").attr("src", photo); 
+
+                $("#titulo").empty("");
+                $("#descripcion").empty("");
+                $("#precio").empty("");
 
                 $("#titulo").append("Título: "+ datos.title + "<br>");
                 $("#descripcion").append("Descripción: "+ datos.description + "<br>");
@@ -135,20 +143,28 @@
             success: function(datos) { // respuesta
                 console.log(datos); // para la consola del navegador
 
-                $("p").text("");
+                /* var photo = datos.image;
+                $("#foto").attr("src", photo); */
+                $("#resultados").empty("");
 
                 for(var i = 0; i < datos.length; i++){
-                
 
-           /* var photo = datos.image;
-            $("#foto").attr("src", photo); */
+                    $("#titulo").append("Título: "+ datos[i].title + "<br>");
+                    $("#descripcion").append("Descripción: "+ datos[i].description + "<br>");
+                    $("#precio").append("Precio: "+ datos[i].price + "<br>");
+/*
 
-            $("#titulo").append("Título: "+ datos.title + "<br>");
-            $("#descripcion").append("Descripción: "+ datos.description + "<br>");
-            $("#precio").append("Precio: "+ datos.price + "<br>");
+                    let titulo = datos[i].title;
+                    $("#titulo").text(titulo);
 
+                    let descripcion = datos[i].description;
+                    $("#descripcion").text(descripcion);
 
-        }
+                    let precio = datos[i].price;
+                    $("#precio").text(precio);
+*/
+
+                }
             },
 
             error: function(error){
