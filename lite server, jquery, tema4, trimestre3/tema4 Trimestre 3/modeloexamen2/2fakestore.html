@@ -87,6 +87,7 @@
                 <!-- Aqui cargaremos los resultados-->
 
                 <img src='' id="foto"><br>
+                <p id="id"></p>
                 <p id="titulo"></p>
                 <p id="descripcion"></p>
                 <p id="precio"></p>
@@ -100,37 +101,36 @@
 
         $("#btn-producto").click(function(){
 
-                var id = $("#codProducto").val();
+            var id = $("#codProducto").val();
 
             $.ajax({
 
-                url: 'https://fakestoreapi.com/products/' + id,
-                dataType: 'json',
-                success: function(datos) { // respuesta
-                    console.log(datos); // para la consola del navegador
-                
-                     
+            url: 'https://fakestoreapi.com/products/' + id,
+            dataType: 'json',
+            success: function(datos) { // respuesta
+                console.log(datos); // para la consola del navegador
 
-                var photo = datos.image;
-                $("#foto").attr("src", photo); 
 
-                $("#titulo").empty("");
-                $("#descripcion").empty("");
-                $("#precio").empty("");
+            var photo = datos.image;
+            $("#foto").attr("src", photo); 
 
-                $("#titulo").append("Título: "+ datos.title + "<br>");
-                $("#descripcion").append("Descripción: "+ datos.description + "<br>");
-                $("#precio").append("Precio: "+ datos.price + "<br>");
-            
-                
-                },
+            $("#titulo").empty("");
+            $("#descripcion").empty("");
+            $("#precio").empty("");
 
-                error: function(error){
-                $("#datos").text("Error cargando datos del servidor.");
-                }
+            $("#titulo").append("Título: "+ datos.title + "<br>");
+            $("#descripcion").append("Descripción: "+ datos.description + "<br>");
+            $("#precio").append("Precio: "+ datos.price + "<br>");
+
+
+            },
+
+            error: function(error){
+            $("#datos").text("Error cargando datos del servidor.");
+            }
 
             });
-        });
+            });
 
 
         $("#btn-todos").click(function(){
@@ -141,28 +141,45 @@
             url: 'https://fakestoreapi.com/products/',
             dataType: 'json',
             success: function(datos) { // respuesta
-                console.log(datos); // para la consola del navegador
 
-                /* var photo = datos.image;
-                $("#foto").attr("src", photo); */
-                $("#resultados").empty("");
+                console.log(datos); // para la consola del navegador
+                $("p").text("");
 
                 for(var i = 0; i < datos.length; i++){
 
-                    $("#titulo").append("Título: "+ datos[i].title + "<br>");
-                    $("#descripcion").append("Descripción: "+ datos[i].description + "<br>");
-                    $("#precio").append("Precio: "+ datos[i].price + "<br>");
-/*
+                    // Para ordenarlos juntos
+
+                    var resultados=$("<div id='resultados'></div>");
+
+                        resultados.append("<p>"+"<img src="+datos[i].image+" width=100px height=100px></p>");
+                        resultados.append("<p>"+"<b>ID: </b>"+datos[i].id+"</p>");
+                        resultados.append("<p>"+"<b>Nombre: </b>"+datos[i].title+"</p>");
+                        resultados.append("<p>"+"<b>Precio: </b>"+datos[i].price+"</p>");
+                        resultados.append("<p>"+"<b>Descripcion: </b>" + datos[i].description+">"+"<br>"+"<br>");
+                            
+                        $("#resultados").append(resultados);
+
+
+
+
+                    // Para ordenarlos por separado
+
+                   /* var photo = datos[i].image;
+                    $("#foto").append(photo + "<br>");
+
+                    let id = datos[i].id;
+                    $("#id").append(id + "<br>");
 
                     let titulo = datos[i].title;
-                    $("#titulo").text(titulo);
+                    $("#titulo").append(titulo + "<br>");
 
-                    let descripcion = datos[i].description;
-                    $("#descripcion").text(descripcion);
+                    let descripcion = datos[i].descripcion;
+                    $("#descripcion").append(descripcion + "<br>");
 
                     let precio = datos[i].price;
-                    $("#precio").text(precio);
-*/
+                    $("#precio").append(precio + "<br>");*/
+
+                        
 
                 }
             },

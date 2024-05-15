@@ -15,26 +15,25 @@
    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
 <body>
-    <label>Nombre: </label><input type="text" id="nombre" required> <br>
-    <label>Primer Apellido: </label><input type="text" id="apellido1" required><br>
-    <label>Segundo Apellido: </label><input type="text" id="apellido2" required><br>
-    <label>DNI: </label><input type="text" id="dni" required><br>
-    <label>Email: </label><input type="email" id="correo" required><br>
-    <label>Contraseña: </label><input type="password" id="password1" required><br>
-    <label>Confirmar contraseña: </label><input type="password" id="password2" required><br>
+    <label>Nombre: </label><input type="text" id="nombre" required><span id="errornombre"></span><br>
+    <label>Primer Apellido: </label><input type="text" id="apellido1" required><span id="errorapellido1"></span><br>
+    <label>Segundo Apellido: </label><input type="text" id="apellido2" required><span id="errorapellido2"></span><br>
+    <label>DNI: </label><input type="text" id="dni" required><span id="errordni"></span><br>
+    <label>Email: </label><input type="email" id="correo" required><span id="errorcorreo"></span><br>
+    <label>Contraseña: </label><input type="password" id="password1" required><span id="errorpassword1"></span><br>
+    <label>Confirmar contraseña: </label><input type="password" id="password2" required><span id="errorpassword2"></span><br>
 
     <label>Descripción: </label><input type="text"><br>
     <label>Fecha de nacimiento: </label><input type="date"><br>
     
     
-    <label>Términos y condiciones: </label><input type="checkbox" name="" id="privacidad" required><br>
-    <button id="registro">Registrarse</button><span id="errores"></span><br>
+    <label>Términos y condiciones: </label><input type="checkbox" id="privacidad" required><span id="errorprivacidad"></span><br>
+    <button id="registro">Registrarse</button><br>
     <script>
         $(document).ready(function () {
             $("#registro").click(function(){
-                let patronEmail =  /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
-                let patronContraseña = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%-_*?&])([A-Za-z\d$@$!%-_*?&]|[^ ]){8,}$/;
-                let patronDNI = /^\d{1,8}[A-Za-z]$/;
+                var patronEmail =  /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
+                let patronDNI = /^([0-9]{8})*[a-zA-Z]+$/;
                 let nombre = $("#nombre").val();
                 let apellido1 = $("#apellido1").val();
                 let apellido2 = $("#apellido2").val();
@@ -42,74 +41,94 @@
                 let correo = $("#correo").val();
                 let contra1 = $("#password1").val();
                 let contra2 = $("#password2").val();
-                let privacidad = $("#privacidad").val();
+                let privacidad = $("#privacidad").is(":checked"); // para validar checkbox
 
-                $("#errores").text(""); // Quita lo anterior y vuelve a comprobar
+                 
                 if (nombre==""){
-                    $("#errores").append("El campo nombre es necesario para rellenar el formulario" + '<br>');
+                    $("#errornombre").text(""); // Quita lo anterior y vuelve a comprobar
+                    $("#errornombre").append("El campo nombre es necesario para rellenar el formulario" + '<br>');
                 }
                 else {
-                    $("#errores").append(""); 
+                    $("#errornombre").text(""); 
                 }
                 if (apellido1 == "")
                 {
-                    $("#errores").append("El campo apellido1 es necesario para rellenar el formulario" + '<br>');
+                    $("#errorapellido1").text("");
+                    $("#errorapellido1").append("El campo apellido1 es necesario para rellenar el formulario" + '<br>');
                 }
                 else{
-                    $("#errores").append("");
+                    $("#errorapellido1").text("");
                 }
                 if (apellido2 == "")
                 {
-                    $("#errores").append("El campo apellido2 es necesario para rellenar el formulario" + '<br>');
+                    $("#errorapellido2").text("");
+                    $("#errorapellido2").append("El campo apellido2 es necesario para rellenar el formulario" + '<br>');
                 }
                 else{
-                    $("#errores").append("");
+                    $("#errorapellido2").text("");
                 }
                 if (dni=="")
                 {
-                    $("#errores").append("El campo DNI es necesario para rellenar el formulario" + '<br>')
+                    $("#errordni").text("");
+                    $("#errordni").append("El campo DNI es necesario para rellenar el formulario" + '<br>')
                 }
                 else{
                     // No está vacio
                     if (patronDNI != dni){
                         // No encaja con el patron de DNI
-                        $("#errores").append("Formato de DNI no válido" + '<br>');
+                        $("#errordni").text("");
+                        $("#errordni").append("Formato de DNI no válido" + '<br>');
                     }
                     else{
-                        $("#errores").append("");
+                        $("#errordni").text("");
                     }
                 }
                 if (correo=="")
                 {
-                    $("#errores").append("El campo correo es necesario para rellenar el formulario" + '<br>')
+                    $("#errorcorreo").text("");
+                    $("#errorcorreo").append("El campo email es necesario para rellenar el formulario" + '<br>')
                 }
                 else{
                     // El correo no es la cadena vacía
-                    if (!patronEmail.append(correo)){
-                        // No encaja con el patron de Email
-                        $("#errores").append("Formato no válido de correo" + '<br>');
+                    if (patronEmail.test( jQuery(correo).val() )){
+                        // Email correcto
+                        $("#errorcorreo").append("");
+                        
                     }
                     else{
-                        $("#errores").append("");
+                        $("#errorcorreo").text("");
+                        $("#errorcorreo").append("Formato de email no válido" + '<br>');
                     }
                 }
-                if (contra1!=contra2){
-                    $("#errores").append("Las contraseñas deben coincidir" + '<br>');
+
+                if (contra1<8){
+                    $("#errorpassword1").text("");
+                    $("#errorpassword1").append("La contraseña no cumple con requisitos. Longitud mínima 8." + '<br>');
                 }
                 else{
+                    $("#errorpassword1").text("");
+
                     // Las contraseñas son iguales
-                    if (patronContraseña != contra1 | patronContraseña != contra2){
-                        $("#errores").append("La contraseña no cumple con requisitos. Longitud mínima 8." + '<br>');
+                    if (contra1!=contra2){
+                        $("#errorpassword2").text("");
+                        $("#errorpassword2").append("Las contraseñas deben coincidir" + '<br>');
                       }
                     else{
-                        $("#errores").append("");
+                        $("#errorpassword2").text("");
                     }
                 }
+
                 if (!privacidad){
-                    $("#errores").append("Debe aceptar políticas de privacidad" + '<br>')
+                    $("#errorprivacidad").text("");
+                    $("#errorprivacidad").append("Debe aceptar los términos y condiciones" + '<br>');
                 }
-                else{
-                    $("#errores").append("")
+                else {
+                    $("#errorprivacidad").text(""); 
+                }
+
+                if ("span"="") {
+                    var nombreUsuario = generarNombreUsuario(nombre, apellido1, apellido2, dni);
+                    alert('Nombre de usuario generado: ' + nombreUsuario);
                 }
             })
         });

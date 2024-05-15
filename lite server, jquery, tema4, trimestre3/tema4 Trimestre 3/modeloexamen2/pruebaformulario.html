@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Formulario</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="formulario">
+        <label for="">*Nombre:</label><input type="text" name="" id="nombre" required><span id="errorNombre"></span><br>
+        <label for="">*Apellidos1:</label><input type="text" name="" id="apellidos" required><span id="errorApellidos1"></span><br>
+        <label for="">*Apellidos2:</label><input type="text" name="" id="apellidos2" required><span id="errorApellidos2"></span><br>
+        <label for="">*DNI:</label><input type="text" name="" id="dni" required><span id="errorDNI"></span><br>
+        <label for="">*Email:</label><input type="text" name="" id="correo" required><span id="errorCorreo"></span><br>
+        <label for="">*Contraseña:</label><input type="password" name="" id="contrasena1" required><span id="errorContrasena"></span><br>
+        <label for="">*Repite contraseña:</label><input type="password" name="" id="contrasena2" required><span id="errorContrasena2"></span><br>
+        <label for="">Descripción:</label><textarea name="" id="descripcion"></textarea><br>
+        <label for="">Fecha de nacimiento:</label><input type="date" name="" id="fecha"><br>
+        <label for="">*Acepto el tratamiento de datos personales:</label><input type="checkbox" name="" id="aceptacion"><span id="errorAceptacion"></span><br>
+        <button>Registrarse</button>
+        <p id="usuario"></p>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            $("button").click(function(){
+                
+                var formulario = $("input");
+                var errores=$("span");
+                let patronEmail= /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
+                let patronPassword = /^(?=.*[a-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
+               /* let patronPassword =  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%-_*?&])[A-Za-z\d$@$!%*-_?&]{8,}/ */ 
+               /*Comprueba que la contraseña tiene:
+                Al menos una letra minúscula.
+                Al menos una letra mayúscula.
+                Al menos un dígito.
+                Al menos un carácter especial del conjunto [$@$!%*-_^?&].
+                La longitud mínima de la contraseña debe ser de 8 caracteres
+               */;
+                let letra = ['T','R','W','A','G','M','Y','F','P','D','X','B','N','J','Z','S','Q','V','H','L','C','K','E'];
+                var cadena = $("#dni").val(); //DNI COMPLETO           
+                let cadenaSinEspacios = cadena.replace(/ /g, "");           
+                let cadenaLimpia = cadenaSinEspacios.toUpperCase();
+                var numero = parseInt(cadenaLimpia.substring(0,8));
+                var letraUsuario = cadena[8];//Letra escrita por el usuario
+                var letraReal = letra[numero%23];//Letra real del DNI calculada segun la formula
+                var letraInNom = $("#nombre").val().substr(0,1);
+                var letrasApel1 = $("#apellidos").val().substr(0,3);
+                var letrasApel2 = $("#apellidos2").val().substr(0,3); 
+                var letrasDNI = $("#dni").val().substr(6,3);
+                var cadena = letraInNom + letrasApel1 + letrasApel2 + letrasDNI;
+                var usuario = cadena.toLowerCase();
+                
+               
+                    if($("#nombre").val()==''){
+                        $("#errorNombre").text("Rellena este campo");  
+                    }else
+                        $("#errorNombre").text("");
+                        
+                        
+                    if($("#apellidos").val()==''){
+                        $("#errorApellidos1").text("Rellena este campo");
+                    }else 
+                        $("#errorApellidos1").text("");       
+                    
+
+                    if($("#apellidos2").val()==''){
+                        $("#errorApellidos2").text("Rellena este campo");
+                    }else 
+                        $("#errorApellidos2").text("");  
+
+
+                    if($("#dni").val()==''){
+                        $("#errorDNI").text("Rellena este campo");
+                    }else{
+                            $("#errorDNI").text("");  
+                            //Parte numerica
+                           if(numero=='NaN'|| letraUsuario != letraReal){
+                               $("#errorDNI").text("Escriba un DNI verdadero");
+                           }else{
+                               
+                               $("#errorDNI").text("");
+                           }
+                        }
+
+
+                    if($("#correo").val()==''){
+                        $("#errorCorreo").text("Rellena este campo");
+                    }else{
+                        
+                        if(!patronEmail.test($("#correo").val())){
+                            $("#errorCorreo").text("Introduce un email de verdad");
+                        }else{
+                            $("#errorCorreo").text(""); 
+                        }
+                    }
+                        
+
+                    if($("#contrasena1").val()!=$("#contrasena2").val()){
+                        $("#errorContrasena").text("Las contraseñas deben de coincidir");
+                        $("#errorContrasena2").text("Las contraseñas deben de coincidir");
+                    }else{
+                        
+                        if(!patronPassword.test($("#contrasena1").val())){
+                            $("#errorContrasena").text("No cumple con los requisitos. Longitud mínima 8, incluir mayúscula, minúscula");
+                            $("#errorContrasena2").text("No cumple con los requisitos. Longitud mínima 8, incluir mayúscula, minúscula");
+                        }else{
+                            $("#errorContrasena").text("");
+                            $("#errorContrasena2").text("");
+                        }
+                    }
+                    
+                    if($("#aceptacion")[0].checked==false){
+                        $("#errorAceptacion").text("Debes aceptar el tratamiento de datos personales")
+                    }else
+                        $("#errorAceptacion").text("");
+                    
+                    $("#usuario").text("El usuario generado es: " + usuario);
+            });
+        });
+    </script>
+
+</body>
+</html>

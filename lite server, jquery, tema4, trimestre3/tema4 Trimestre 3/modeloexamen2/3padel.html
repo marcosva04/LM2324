@@ -93,7 +93,6 @@
         </form>
      </div>
     <script>
-        $(document).ready(function () {
 
         $.datepicker.regional['es'] = {
         closeText: 'Cerrar',
@@ -110,46 +109,61 @@
         firstDay: 1,
         isRTL: false,
         showMonthAfterYear: false,
-        yearSuffix: ''
-    };
+        yearSuffix: '',
+        };
+
+        $.datepicker.setDefaults($.datepicker.regional['es']);
 
 
-    $.datepicker.setDefaults($.datepicker.regional['es']);
-    $(function() {
-        $( "#fecha" ).datepicker({ 
-            minDate: "+1" /*A partir de pasado mañana*/, maxDate: "+1W"/*Hasta dentro de ocho días*/
-        
+        $(function () {
+            $("#fecha").datepicker(
+            {minDate:"+1D",maxDate:"+1W"}); // A partir de mañana y hasta una semana
         });
-        
+
+
+
+        $(document).ready(function(){
+            $("#reserva").click(function(e){
+                e.preventDefault();
+                var fecha = $("#fecha").val();
+                var pista = $("#pista").val();
+                var hora = $("#hora").val();
+                var luz = $("#luz")[0].checked;
+                var precio = 0;
+                
+                switch(hora){
+
+                case "1": case "2": case"3": case"4":
+                    
+                    precio = 10;
+                    if(luz==true){
+                        precio += 4;
+                    }
+                    break;
+
+                case "5": case"6":
+                    precio = 12;
+                    if(luz==true){
+                        precio += 4;
+                    }
+                    break;
+
+                case "7": case "8": case "9":
+                    precio = 16;
+                    if(luz==true){
+                        precio += 4;
+                    }
+                    break;
+
+                }
+         
+                $("#totalPrecio").empty("")
+                $("#totalPrecio").text("Precio: ");
+                $("#totalPrecio").append(precio + "€");
+                $("#diaReserva").html("<p>"+fecha+"</p><p>"+"Pista: " +pista+"</p>");
+       
+
     });
-
-    /*$("#reserva").click(function(){
-
-
-
-
-         var precio = 0;
-
-        if("#hora" = 1){
-            precio + 10;
-            $("#totalPrecio").append(precio + "€")
-        }
-        if("#hora" = 5-6){
-            precio + 12
-            $("#totalPrecio").append(precio + "€")
-        }
-        if("#hora" = 7-9){
-            precio + 16
-            $("#totalPrecio").append(precio + "€")
-        }
-        else{
-            $("#totalPrecio").append("Debe introducir una hora")
-        }
-
-        
-        
-
-    });*/
 });
     </script>
 </body>
