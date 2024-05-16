@@ -26,8 +26,9 @@
           type: 'GET',
           success: function(response){
             
-            $("#datos").text("Información sobre: " + usuario);
             $("#datos").empty();
+            $("#datos").append("Información sobre: " + usuario + "<br>");
+            $("#datos").append("Avatar: "+'<p><img width="120" src="'+response.avatar_url+'"></p>');
             $("#datos").append("Identificación: "+ response.login + "<br>");
             $("#datos").append("ID: "+ response.id + "<br>");
             $("#datos").append("URL: "+ response.html_url + "<br>");
