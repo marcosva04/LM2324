@@ -27,12 +27,11 @@
           type: 'GET',
           success: function(response){
             
-            $("#datos").append("Información sobre: " + libro);
+            
             $("#datos").empty(); 
+          // no sale:  $("#datos").append('<p>'+'<img width="120" src="'+response.items[0].imageLinks.smallThumbnail+'"></p>');
             $("#datos").append("Título: "+ response.items[0].volumeInfo.title + "<br>");
             $("#datos").append("Artículos: "+ response.totalItems + "<br>");
-
-            
             $("#datos").append("ID: "+ response.items[0].id + "<br>");
             $("#datos").append("Autor: "+ response.items[0].volumeInfo.authors[0] + "<br>");
             $("#datos").append("Fecha lanzamiento: "+ response.items[0].volumeInfo.publishedDate + "<br>");

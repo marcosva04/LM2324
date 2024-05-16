@@ -18,7 +18,8 @@
         /* Completar el código jQuery aquí */
         $(document).ready(function(){
             $("#mostrar").click(function(){
-            
+              $("#pelicula").empty();
+              
         var apiKey = '668f4ef4';
         var titulo = $("#titulo").val();
         
@@ -28,7 +29,7 @@
           success: function(response){
             
             $("#pelicula").text("Información sobre: " + titulo);
-            $("#pelicula").empty();
+            $("#pelicula").append('<p>'+'<img width="120" src="'+response.Poster+'"></p>');  
             $("#pelicula").append("Título de la película: "+ response.Title + "<br>");
             $("#pelicula").append("Fecha lanzamiento: "+ response.Released + "<br>");
             $("#pelicula").append("Duración: "+ response.Runtime + "<br>");
@@ -38,8 +39,9 @@
 
           },
           error: function(error){
-            $("#pelicula").text("Error al obtener la pelicula: " + error);
-          }
+            
+            $("#pelicula").text("Error cargando datos del servidor.");
+            }
         });
       });
           
