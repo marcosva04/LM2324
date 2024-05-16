@@ -23,16 +23,17 @@
     <label>Contraseña: </label><input type="password" id="password1" required><span id="errorpassword1"></span><br>
     <label>Confirmar contraseña: </label><input type="password" id="password2" required><span id="errorpassword2"></span><br>
 
-    <label>Descripción: </label><input type="text"><br>
+    <label>Descripción: </label><textarea type="text"></textarea><br>
     <label>Fecha de nacimiento: </label><input type="date"><br>
     
     
     <label>Términos y condiciones: </label><input type="checkbox" id="privacidad" required><span id="errorprivacidad"></span><br>
     <button id="registro">Registrarse</button><br>
+    <p id="usuario"></p>
     <script>
         $(document).ready(function () {
             $("#registro").click(function(){
-                var patronEmail =  /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
+                let patronEmail= /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
                 let patronDNI = /^([0-9]{8})*[a-zA-Z]+$/;
                 let nombre = $("#nombre").val();
                 let apellido1 = $("#apellido1").val();
@@ -43,7 +44,13 @@
                 let contra2 = $("#password2").val();
                 let privacidad = $("#privacidad").is(":checked"); // para validar checkbox
 
-                 
+              /*  var letraInNom = $("#nombre").val().substr(0,1);
+                var letrasApel1 = $("#apellidos").val().substr(0,3);
+                var letrasApel2 = $("#apellidos2").val().substr(0,3); 
+                var letrasDNI = $("#dni").val().substr(6,3);
+                var cadena = letraInNom + letrasApel1 + letrasApel2 + letrasDNI;
+                var usuario = cadena.toLowerCase();*/
+
                 if (nombre==""){
                     $("#errornombre").text(""); // Quita lo anterior y vuelve a comprobar
                     $("#errornombre").append("El campo nombre es necesario para rellenar el formulario" + '<br>');
@@ -80,26 +87,25 @@
                         $("#errordni").append("Formato de DNI no válido" + '<br>');
                     }
                     else{
-                        $("#errordni").text("");
+                        $("#errordni").append("");
                     }
                 }
-                if (correo=="")
-                {
-                    $("#errorcorreo").text("");
-                    $("#errorcorreo").append("El campo email es necesario para rellenar el formulario" + '<br>')
-                }
-                else{
-                    // El correo no es la cadena vacía
-                    if (patronEmail.test( jQuery(correo).val() )){
-                        // Email correcto
-                        $("#errorcorreo").append("");
+
+
+                if(correo=""){
+                        $("#errorcorreo").text("El campo email es necesario para rellenar el formulario" + '<br>');
+                    
+                    }
+                    
+                else{// Si no está vacío
                         
+                        if(!patronEmail.test(correo)) {
+                            $("#errorcorreo").text("");
+                            $("#errorcorreo").append("Introduce un email de verdad");
+                        }else{
+                            $("#errorcorreo").text(); 
+                        }
                     }
-                    else{
-                        $("#errorcorreo").text("");
-                        $("#errorcorreo").append("Formato de email no válido" + '<br>');
-                    }
-                }
 
                 if (contra1<8){
                     $("#errorpassword1").text("");
@@ -126,10 +132,7 @@
                     $("#errorprivacidad").text(""); 
                 }
 
-                if ("span"="") {
-                    var nombreUsuario = generarNombreUsuario(nombre, apellido1, apellido2, dni);
-                    alert('Nombre de usuario generado: ' + nombreUsuario);
-                }
+              /*  $("#usuario").text("El usuario generado es: " + usuario);*/
             })
         });
     </script>

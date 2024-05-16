@@ -66,7 +66,7 @@
             opacity: 0.8;
         }
 
-        #foto{
+        img{
             height: 100px;
             width: 100px;
         }
@@ -86,12 +86,6 @@
             <div id="resultados">
                 <!-- Aqui cargaremos los resultados-->
 
-                <img src='' id="foto"><br>
-                <p id="id"></p>
-                <p id="titulo"></p>
-                <p id="descripcion"></p>
-                <p id="precio"></p>
-
             </div>
         </div>
     </div>
@@ -100,7 +94,7 @@
     $(document).ready(function () {
 
         $("#btn-producto").click(function(){
-
+            
             var id = $("#codProducto").val();
 
             $.ajax({
@@ -110,23 +104,24 @@
             success: function(datos) { // respuesta
                 console.log(datos); // para la consola del navegador
 
+                $("#resultados").empty(); // borrar lo anterior
 
-            var photo = datos.image;
-            $("#foto").attr("src", photo); 
+              
 
-            $("#titulo").empty("");
-            $("#descripcion").empty("");
-            $("#precio").empty("");
+                var photo = datos.image;
+                var img = $("<img src="+photo+"><br>")
 
-            $("#titulo").append("Título: "+ datos.title + "<br>");
-            $("#descripcion").append("Descripción: "+ datos.description + "<br>");
-            $("#precio").append("Precio: "+ datos.price + "<br>");
 
+            $("#resultados").append(img)
+            $("#resultados").append("Título: "+ datos.title + "<br><br>");
+            $("#resultados").append("Descripción: "+ datos.description + "<br><br>");
+            $("#resultados").append("Precio: "+ datos.price + "<br><br>");
+            $("#resultados").text();
 
             },
 
             error: function(error){
-            $("#datos").text("Error cargando datos del servidor.");
+            $("#resultados").text("Error cargando datos del servidor.");
             }
 
             });
@@ -143,7 +138,7 @@
             success: function(datos) { // respuesta
 
                 console.log(datos); // para la consola del navegador
-                $("p").text("");
+                $("#resultados").empty(); // borrar lo anterior
 
                 for(var i = 0; i < datos.length; i++){
 
@@ -158,8 +153,6 @@
                         resultados.append("<p>"+"<b>Descripcion: </b>" + datos[i].description+">"+"<br>"+"<br>");
                             
                         $("#resultados").append(resultados);
-
-
 
 
                     // Para ordenarlos por separado
