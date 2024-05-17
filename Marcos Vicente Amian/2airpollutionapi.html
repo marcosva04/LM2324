@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
+</head>
+<body>
+    <h1>Air Pulltion API</h1>
+    <label><p>Introduce la latitud: </p></label><input type="text" id="latitud" required><br>
+    <label><p>Introduce la longitud: </p></label><input type="text" id="longitud" required><br>
+    <br><button>Enviar</button>
+    <div id="resultados"></div>
+    <script>
+        $(document).ready(function () {
+                
+        $("button").click(function(){
+
+            var latitud = $("#latitud").val();
+            var longitud = $("#longitud").val();
+
+            if(latitud == "" || longitud == ""){
+                $("#resultados").empty();
+                $("#resultados").append("Por favor, rellene los dos campos");
+            }
+            else{
+
+            
+            var apiKey = '3eabe689b7c2a4ae88d4f03249843d2a';
+            
+
+            $.ajax({
+
+                
+            url: 'http://api.openweathermap.org/data/2.5/air_pollution?lat='+latitud+'&lon='+longitud+'&appid='+apiKey,
+            dataType: 'json',
+            success: function(datos) { // respuesta
+
+                console.log(datos); // para la consola del navegador
+                
+                $("#resultados").empty();// borrar lo anterior
+              
+              switch(datos.list[0].main.aqi){
+
+                case 1:
+                    $("#resultados").css("background-color", "green");
+                    $("#resultados").append('<b>'+"Calidad del aire: "+'</b>'+"Bueno"+"<br>");
+                    $("#resultados").append('<b>'+"Cantidad de monóxido de carbono (CO): "+'</b>'+ datos.list[0].components.co + " µg/m"+'<sup>'+"3"+'</sup>' +"<br>");
+                    $("#resultados").append('<b>'+"Cantidad de dióxido de azufre (SO"+'<sub>'+"2"+'</sub>'+"): "+'</b>'+ datos.list[0].components.so2 + " µg/m"+'<sup>'+"3"+'</sup>' + "<br>");
+                    $("#resultados").append('<b>'+"Cantidad de partículas finas (PM"+'<sub>'+"2.5"+'</sub>'+"): "+'</b>'+ datos.list[0].components.pm2_5 + " µg/m"+'<sup>'+"3"+'</sup>' + "<br>");
+                    
+                    break;
+
+                case 2:
+                    $("#resultados").css("background-color", "yellow");
+                    $("#resultados").append('<b>'+"Calidad del aire: "+'</b>'+"Aceptable"+"<br>");
+                    $("#resultados").append('<b>'+"Cantidad de monóxido de carbono (CO): "+'</b>'+ datos.list[0].components.co + " µg/m"+'<sup>'+"3"+'</sup>' + "<br>");
+                    $("#resultados").append('<b>'+"Cantidad de dióxido de azufre (SO"+'<sub>'+"2"+'</sub>'+"): "+'</b>'+ datos.list[0].components.so2 + " µg/m"+'<sup>'+"3"+'</sup>' + "<br>");
+                    $("#resultados").append('<b>'+"Cantidad de partículas finas (PM"+'<sub>'+"2.5"+'</sub>'+"): "+'</b>'+ datos.list[0].components.pm2_5 + " µg/m"+'<sup>'+"3"+'</sup>' + "<br>");
+                    
+                    break;
+
+                case 3:
+                    $("#resultados").css("background-color", "orange");
+                    $("#resultados").append('<b>'+"Calidad del aire: Moderado"+'</b>'+"<br>");
+                        $("#resultados").append('<b>'+"Cantidad de monóxido de carbono (CO): "+'</b>'+ datos.list[0].components.co + " µg/m"+'<sup>'+"3"+'</sup>' + "<br>");
+                        $("#resultados").append('<b>'+"Cantidad de dióxido de azufre (SO"+'<sub>'+"2"+'</sub>'+"): "+'</b>'+ datos.list[0].components.so2 + " µg/m"+'<sup>'+"3"+'</sup>' + "<br>");
+                        $("#resultados").append('<b>'+"Cantidad de partículas finas (PM"+'<sub>'+"2.5"+'</sub>'+"): "+'</b>'+ datos.list[0].components.pm2_5 + " µg/m"+'<sup>'+"3"+'</sup>' + "<br>");
+                    
+                    break;
+                    
+                case 4:
+                    $("#resultados").css("background-color", "purple");
+                    $("#resultados").append('<b>'+"Calidad del aire: Malo"+'</b>'+"<br>");
+                        $("#resultados").append('<b>'+"Cantidad de monóxido de carbono (CO): "+'</b>'+ datos.list[0].components.co + " µg/m"+'<sup>'+"3"+'</sup>' + "<br>");
+                        $("#resultados").append('<b>'+"Cantidad de dióxido de azufre (SO"+'<sub>'+"2"+'</sub>'+"): "+'</b>'+ datos.list[0].components.so2 + " µg/m"+'<sup>'+"3"+'</sup>' + "<br>");
+                        $("#resultados").append('<b>'+"Cantidad de partículas finas (PM"+'<sub>'+"2.5"+'</sub>'+"): "+'</b>'+ datos.list[0].components.pm2_5 + " µg/m"+'<sup>'+"3"+'</sup>' + "<br>");
+                    
+                    break;
+
+                case 5:
+                    $("#resultados").css("background-color", "red");
+                    $("#resultados").append('<b>'+"Calidad del aire: Muy malo"+'</b>'+"<br>");
+                        $("#resultados").append('<b>'+"Cantidad de monóxido de carbono (CO): "+'</b>'+ datos.list[0].components.co + " µg/m"+'<sup>'+"3"+'</sup>' + "<br>");
+                        $("#resultados").append('<b>'+"Cantidad de dióxido de azufre (SO"+'<sub>'+"2"+'</sub>'+"): "+'</b>'+ datos.list[0].components.so2 + " µg/m"+'<sup>'+"3"+'</sup>' + "<br>");
+                        $("#resultados").append('<b>'+"Cantidad de partículas finas (PM"+'<sub>'+"2.5"+'</sub>'+"): "+'</b>'+ datos.list[0].components.pm2_5 + " µg/m"+'<sup>'+"3"+'</sup>' + "<br>");
+                    
+                    break;
+                }
+                
+            
+            },
+
+            error: function(error){
+            $("#resultados").empty();
+            $("#resultados").append("Error de ajax");
+            }
+
+        });
+    
+    }
+});
+
+        });
+    </script>
+</body>
+</html>
