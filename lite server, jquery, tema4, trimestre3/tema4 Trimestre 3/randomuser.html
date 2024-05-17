@@ -121,8 +121,9 @@
                 console.log(datos);
                 $("img").attr("src","multiple.png")
                 $("p").text("");
+                
                 for(var i = 0; i < datos.results.length; i++){
-                    
+
                     let nombre = datos.results[i].name.first + " " + datos.results[i].name.last;
                     $(".fullname").append(nombre + "<br>");
 
