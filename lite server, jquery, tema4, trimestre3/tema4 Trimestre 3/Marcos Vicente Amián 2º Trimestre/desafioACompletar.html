@@ -16,7 +16,7 @@
     function mostrar(element)
         {	
             var now = new Date()	
-            if (element!=null) { // Si no había comenzado el juego		
+            if (!jugar) { // Si no había comenzado el juego		
               jugar = true;		
               startTime = now.getTime();
             }	
@@ -36,7 +36,7 @@
     function restart(form) {	
             total = 0;	
             jugar = false;
-            for (var i = 0; i < jugar.length; ++i) {		// Inicializamos todas las casillas
+            for (var i = 0; i <= 100; i++) {		// Inicializamos todas las casillas
                     form.elements[i].checked = false;	
             }
     }
