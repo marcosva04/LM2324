@@ -9,9 +9,11 @@
 
 <body>
     <h1>Calculadora de distancia de viajes</h1>
-    <input type="text" id="caja" onkeypress="return event.charCode != 32" placeholder="Introduzca distancias"> <button onclick="calcular()">Calcula</button>
+    <input type="text" id="caja" placeholder="Introduzca distancias"> <button onclick="calcular()">Calcula</button>
     <script>
         function calcular() {
+
+            
             var valorCaja = document.getElementById('caja').value;
             var arraydecadena = valorCaja.split(',');
             var suma = 0;
@@ -24,6 +26,7 @@
             else {
                 alert('La distancia total del viaje es de ' + suma + ' Km');
             }
+        
         }
     </script>
 </body>

@@ -11,15 +11,23 @@
     </style>
 </head>
 <body onload="cargarDatos()">
-    <label for="nombre">Nombre:</label><input id="nombre" type="text"><span class="error" id="campo1"></span><br><br>
-    <label for="apellidos">Apellidos:</label><input id="apellidos" type="text"><span class="error" id="campo2"></span><br><br>
-    <label for="email">Email:</label><input id="email" type="email"><span class="error" id="campo3"></span><br><br>
-    <label for="password1">Contraseña:</label><input id="password1" type="password"><span class="error" id="campo4"></span><br><br>
-    <label for="password2">Repite contraseña:</label><input id="password2" type="password"><span class="error" id="campo5"></span><br><br>
-    <label for="dni">DNI:</label><input id="dni" type="text"><span class="error" id="campo6"></span><br><br>
-    <label for="fecha">Fecha de nacimiento:</label><input id="fecha" type="date"><span class="error" id="campo7"></span><br><br>
+    <label for="nombre">Nombre:</label><input id="nombre" type="text" required><span class="error" id="campo1"></span><br><br>
+    <label for="apellidos">Apellidos:</label><input id="apellidos" type="text" required><span class="error" id="campo2"></span><br><br>
+
+    <label for="email">Email:</label><input id="email" type="email" required><span class="error" id="campo3"></span><br><br>
+
+    <label for="password1">Contraseña:</label><input id="password1" type="password" required><span class="error" id="campo4"></span><br><br>
+    <label for="password2">Repite contraseña:</label><input id="password2" type="password" required><span class="error" id="campo5"></span><br><br>
+
+    <label for="dni">DNI:</label><input id="dni" type="text" required><span class="error" id="campo6"></span><br><br>
+
+    <label for="fecha">Fecha de nacimiento:</label><input id="fecha" type="date" required><span class="error" id="campo7"></span><br><br>
+
     <label for="verificacion">Pulse si desea guardar los datos</label><input id="verificacion" type="checkbox" value="off"><br><br>
+
     <button onclick="validar(document.getElementsByTagName('input'))">Validar</button>
+
+    <button onclick="borrar()">Borrar</button>
 
     <script>
         function validar(elementos){
@@ -92,7 +100,7 @@
             return edad >= 18;
         }
 
-        function guardar(){
+        function guardar(){ // setItem para guardar lo que haya
             localStorage.setItem("nombre", document.getElementById("nombre").value);
             localStorage.setItem("apellidos", document.getElementById("apellidos").value);
             localStorage.setItem("email", document.getElementById("email").value);
@@ -100,7 +108,7 @@
             localStorage.setItem("fecha", document.getElementById("fecha").value);
         }
 
-        function cargarDatos(){
+        function cargarDatos(){ // getItem para restaurar lo que haya
             if (localStorage.getItem("nombre") && localStorage.getItem("apellidos") && localStorage.getItem("email")) {
                 document.getElementById("nombre").value = localStorage.getItem("nombre");
                 document.getElementById("apellidos").value = localStorage.getItem("apellidos");
@@ -108,6 +116,10 @@
                 document.getElementById("dni").value = localStorage.getItem("dni");
                 document.getElementById("fecha").value = localStorage.getItem("fecha");
             }
+        }
+
+        function borrar(){
+            localStorage.clear();
         }
     </script>
 </body>
