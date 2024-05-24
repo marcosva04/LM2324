@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Practica Formulario Javascript</title>
     <style>
-        span{
+        .error{
             color: red;
         }
     </style>
@@ -22,6 +22,8 @@
     <label for="dni">DNI:</label><input id="dni" type="text" required><span class="error" id="campo6"></span><br><br>
 
     <label for="fecha">Fecha de nacimiento:</label><input id="fecha" type="date" required><span class="error" id="campo7"></span><br><br>
+
+    <label for="terminos">Términos y condiciones: </label><input id="terminos" type="checkbox" required><span class="error" id="campo8"></span><br><br>
 
     <label for="verificacion">Pulse si desea guardar los datos</label><input id="verificacion" type="checkbox" value="off"><br><br>
 
@@ -56,6 +58,10 @@
             }
             if (!validarEdad()){
                 document.getElementById("campo7").innerHTML = "Debe ser mayor de edad";
+                estanCorrectos = false;
+            }
+            if(!validarTerminos()){
+                document.getElementById("campo8").innerHTML = "Debe de aceptar los términos y condiciones";
                 estanCorrectos = false;
             }
             if (estanCorrectos) {
@@ -100,12 +106,21 @@
             return edad >= 18;
         }
 
+        function validarTerminos(){
+        
+            if (document.getElementById('terminos').checked){
+                let terminos = document.getElementById("terminos").value;
+                return terminos;
+            }
+        }
+
         function guardar(){ // setItem para guardar lo que haya
             localStorage.setItem("nombre", document.getElementById("nombre").value);
             localStorage.setItem("apellidos", document.getElementById("apellidos").value);
             localStorage.setItem("email", document.getElementById("email").value);
             localStorage.setItem("dni", document.getElementById("dni").value);
             localStorage.setItem("fecha", document.getElementById("fecha").value);
+            localStorage.setItem("terminos", document.getElementById("terminos").checked);
         }
 
         function cargarDatos(){ // getItem para restaurar lo que haya
@@ -115,6 +130,7 @@
                 document.getElementById("email").value = localStorage.getItem("email");
                 document.getElementById("dni").value = localStorage.getItem("dni");
                 document.getElementById("fecha").value = localStorage.getItem("fecha");
+                document.getElementById("terminos").checked = localStorage.getItem("terminos");
             }
         }
 

@@ -9,7 +9,8 @@
 
 <body>
     <h1>Calculadora de distancia de viajes</h1>
-    <input type="text" id="caja" placeholder="Introduzca distancias"> <button onclick="calcular()">Calcula</button>
+    <label>Introduzca distancias: </label><input type="text" id="caja"> <button onclick="calcular()">Calcula</button>
+    <p id="resultado"></p>
     <script>
         function calcular() {
 
@@ -21,13 +22,16 @@
                 suma += parseFloat(arraydecadena[i]);
             }
             if (isNaN(suma)) {
-                alert('Introduzca solo números separados por comas');
+                document.getElementById("resultado").innerHTML = "Introduzca solo números separados por comas";
+               /* alert('Introduzca solo números separados por comas');*/
             }
             else {
-                alert('La distancia total del viaje es de ' + suma + ' Km');
+                document.getElementById("resultado").innerHTML = 'La distancia total del viaje es de ' + suma + ' Km';
+               /* alert('La distancia total del viaje es de ' + suma + ' Km');*/
             }
         
         }
+        
     </script>
 </body>
 
