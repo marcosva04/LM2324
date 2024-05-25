@@ -43,6 +43,13 @@
                     }
                 }
             }
+            if (document.getElementById('terminos').checked) {
+                document.getElementById("campo8").innerHTML = ''; // El campo está OK
+            }
+            else{
+                document.getElementById("campo8").innerHTML = "Debe aceptar los términos y condiciones";
+                estanCorrectos = false;
+            }
             if (!validarEmail()){ // Si no es válido el correo
                 document.getElementById("campo3").innerHTML = "Email no válido";
                 estanCorrectos = false;
@@ -58,10 +65,6 @@
             }
             if (!validarEdad()){
                 document.getElementById("campo7").innerHTML = "Debe ser mayor de edad";
-                estanCorrectos = false;
-            }
-            if(!validarTerminos()){
-                document.getElementById("campo8").innerHTML = "Debe de aceptar los términos y condiciones";
                 estanCorrectos = false;
             }
             if (estanCorrectos) {
@@ -106,13 +109,6 @@
             return edad >= 18;
         }
 
-        function validarTerminos(){
-        
-            if (document.getElementById('terminos').checked){
-                let terminos = document.getElementById("terminos").value;
-                return terminos;
-            }
-        }
 
         function guardar(){ // setItem para guardar lo que haya
             localStorage.setItem("nombre", document.getElementById("nombre").value);

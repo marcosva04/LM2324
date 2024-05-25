@@ -9,12 +9,17 @@
 
 <body>
     <h1>Calculadora de distancia de viajes</h1>
-    <label>Introduzca distancias: </label><input type="text" id="caja"> <button onclick="calcular()">Calcula</button>
+    <label>Introduzca distancias: </label><input type="text" id="caja"> 
+    
+    <button onclick="calcular()">Calcula</button>
+    <!--  <button onclick="guardar()">Guardar</button>
+    <button onclick="borrar()">Borrar</button>-->
+
+
     <p id="resultado"></p>
     <script>
         function calcular() {
 
-            
             var valorCaja = document.getElementById('caja').value;
             var arraydecadena = valorCaja.split(',');
             var suma = 0;
@@ -31,7 +36,29 @@
             }
         
         }
-        
+
+        /*function guardar(){
+            let distanciaActual = document.getElementById("resultado").value;
+
+            if (distanciaActual!=""){
+                // Tiene algo
+                localStorage.setItem("distancia", distanciaActual);
+        }
+
+    }
+
+    function cargar(){
+            var almacenado = localStorage.getItem("distancia");
+            if (almacenado!=null)
+            {
+                let distanciaAnterior = parseFloat(almacenado);
+                document.getElementById("resultado").innerHTML="La distancia anterior era de " + distanciaAnterior;
+            }
+        }
+
+    function borrar() { 
+        localStorage.clear();
+     }*/
     </script>
 </body>
 
