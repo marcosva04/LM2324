@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Distancias</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        img{
+            width: 30%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Página de Distancias</h1>
+    <label>Introduce cuanta distancia has hecho hoy: </label><input type="text" id="distanciaActual">
+    <button onclick="guardar()">Guardar distancia</button>
+    <p id="resultado"></p>
+    <script>
+        let distanciaAnterior=100000; // Valor inicial
+        function guardar(){
+            let distanciaActual = document.getElementById("distanciaActual").value;
+            if (distanciaActual!=""){
+                // Tiene algo
+                localStorage.setItem("distancia", distanciaActual);
+                if (distanciaActual>distanciaAnterior){
+                    document.getElementById("resultado").innerHTML = "¡Sigue así!";
+                }
+                if (distanciaActual == distanciaAnterior)
+                {
+                    document.getElementById("resultado").innerHTML = "Has hecho el mismo recorrido";
+                }
+                if (distanciaActual<distanciaAnterior)
+                {
+                    document.getElementById("resultado").innerHTML = "Has hecho menos que la última vez";
+                }
+                if (distanciaActual == 0)
+                {
+                    document.getElementById("resultado").innerHTML = "Hoy no has hecho nada";
+                }
+            }
+            else{
+                document.getElementById("resultado").innerHTML = "Tienes que introducir la distancia de hoy"
+            }
+        }
+        function cargar(){
+            var almacenado = localStorage.getItem("distancia");
+            if (almacenado!=null)
+            {
+                distanciaAnterior = parseFloat(almacenado);
+                document.getElementById("resultado").innerHTML="La distancia de ayer era de " + distanciaAnterior + " km"
+            }
+        }
+        window.onload=cargar();
+    </script>
+</body>
+</html>
