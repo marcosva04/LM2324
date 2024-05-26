@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina 2 de fitness</title>
+</head>
+<body onload="cargar()">
+    <input type="text" id="peso" placeholder="dime cuanto pesas">
+
+    <button onclick="guardar()">Guardar</button>
+    <button onclick="borrar()">Borrar registro</button>
+
+    <p id="resultado"></p>
+<script>
+
+    let pesoAnterior = 100000000;
+    
+
+    function guardar() { 
+        let peso = document.getElementById('peso').value;
+        if(peso != ""){
+            localStorage.setItem('peso', peso);
+            if(peso < pesoAnterior){
+                document.getElementById('resultado').innerHTML = "¡Sigue así!";
+            }
+            if(peso == pesoAnterior){
+                document.getElementById('resultado').innerHTML = "Pesas lo mismo que la última vez";
+            }
+            if(peso > pesoAnterior){
+                document.getElementById('resultado').innerHTML = "Pesas más que la última vez";
+            }
+        }
+        else{
+            document.getElementById('resultado').innerHTML = "Debes introducir un peso";
+        }
+     }
+
+     function cargar() { 
+        var almacenado = localStorage.getItem("peso");
+        
+        if(almacenado != null){
+            pesoAnterior = almacenado
+            document.getElementById('resultado').innerHTML = "Tu último peso era de " + pesoAnterior + " Kg";
+        }
+        else{
+            document.getElementById('resultado').innerHTML = "Bienvenido a tu página Fitness";
+        }
+
+      }
+
+      function borrar() { 
+        localStorage.clear();
+       }
+</script>
+
+</body>
+</html>

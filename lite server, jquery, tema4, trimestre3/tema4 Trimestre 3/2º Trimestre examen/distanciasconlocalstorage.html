@@ -15,8 +15,8 @@
     <button onclick="guardar()">Guardar</button>
     <button onclick="borrar()">Borrar</button>
 
-
-    <p id="frase"></p> <p id="resultado"></p>
+    <p id="resultado"></p>
+    <p id="resultadoinvisible"></p>
     <script>
         function calcular() {
 
@@ -27,19 +27,21 @@
                 suma += parseFloat(arraydecadena[i]);
             }
             if (isNaN(suma)) {
-                document.getElementById("frase").innerHTML = "Introduzca solo números separados por comas";
-               /* alert('Introduzca solo números separados por comas');*/
+               /* document.getElementById("frase").innerHTML = "Introduzca solo números separados por comas";*/
+                alert('Introduzca solo números separados por comas');
             }
             else {
-                document.getElementById("frase").innerHTML = 'La distancia total del viaje es de: ';
-                document.getElementById("resultado").innerHTML = suma;
-               /* alert('La distancia total del viaje es de ' + suma + ' Km');*/
+               /* document.getElementById("frase").innerHTML = 'La distancia total del viaje es de: ';
+                document.getElementById("resultado").innerHTML = suma;*/
+                alert('La distancia total del viaje es de ' + suma + ' Km');
+                document.getElementById("resultadoinvisible").value = suma;
+                
             }
         
         }
 
         function guardar(){
-            let distanciaActual = document.getElementById("resultado").value;
+            let distanciaActual = document.getElementById("resultadoinvisible").value;
 
             if (distanciaActual!=""){
                 // Tiene algo
@@ -55,6 +57,7 @@
                 let distanciaAnterior = parseFloat(almacenado);
                 document.getElementById("resultado").innerHTML="La distancia anterior era de " + distanciaAnterior;
             }
+            
         }
 
     function borrar() { 
