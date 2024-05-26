@@ -45,7 +45,7 @@
 
             if (distanciaActual!=""){
                 // Tiene algo
-                localStorage.setItem("distancia", distanciaActual);
+                localStorage.setItem("distancia", distanciaActual); // Lo guarda
         }
 
     }
@@ -56,6 +56,12 @@
             {
                 let distanciaAnterior = parseFloat(almacenado);
                 document.getElementById("resultado").innerHTML="La distancia anterior era de " + distanciaAnterior;
+
+                // Con alert: alert("La distancia anterior era de " + distanciaAnterior + " Km");
+                
+            }
+            else{
+                document.getElementById("resultado").innerHTML="¡Bienvenido!";
             }
             
         }

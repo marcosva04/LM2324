@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tareas</title>
+</head>
+<body>
+    <input type="text" placeholder="Escriba una tarea" id="tarea">
+    <ul id="listaTareas"></ul>
+    <button onclick="agregarElemento()">Agregar elemento</button>
+    
+    <script>
+        function agregarElemento() {
+        const tarea = document.getElementById('tarea').value;
+        if (tarea) {
+            const lista = document.getElementById('listaTareas');
+            const elemento = document.createElement('li');
+            elemento.textContent = tarea;
+    
+            
+            lista.appendChild(elemento);
+
+            guardarTareas();
+        }
+    }
+
+    function guardarTareas() {
+        const tareas = [];
+        document.querySelectorAll('#listaTareas li').forEach(function(item) {
+            tareas.push(item.firstChild.textContent);
+        });
+        localStorage.setItem('tareas', JSON.stringify(tareas));
+    }
+
+    function cargarTareas() {
+        const tareas = JSON.parse(localStorage.getItem('tareas'));
+        if (tareas) {
+            const lista = document.getElementById('listaTareas');
+            tareas.forEach(function(tarea) {
+                const elemento = document.createElement('li');
+                elemento.textContent = tarea;
+                lista.appendChild(elemento);
+            });
+        }
+    }
+
+    window.onload = cargarTareas;
+    </script>
+</body>
+</html>
