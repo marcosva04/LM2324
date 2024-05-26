@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagina 2 de fitness</title>
 </head>
-<body onload="cargar()">
+<body>
     <input type="text" id="peso" placeholder="dime cuanto pesas">
 
     <button onclick="guardar()">Guardar</button>
@@ -32,7 +32,7 @@
             }
         }
         else{
-            document.getElementById('resultado').innerHTML = "Debes introducir un peso";
+            document.getElementById('resultado').innerHTML = "Debes introducir tu peso";
         }
      }
 
@@ -52,6 +52,8 @@
       function borrar() { 
         localStorage.clear();
        }
+
+       window.onload=cargar();
 </script>
 
 </body>

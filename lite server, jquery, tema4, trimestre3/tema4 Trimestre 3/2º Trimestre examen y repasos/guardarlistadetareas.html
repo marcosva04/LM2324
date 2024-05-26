@@ -5,11 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Tareas</title>
 </head>
-<body>
+<body onload="cargarTareas()">
+
     <input type="text" placeholder="Escriba una tarea" id="tarea">
     <ul id="listaTareas"></ul>
     <button onclick="agregarElemento()">Agregar elemento</button>
-    
+    <button onclick="guardarTareas()">Guardar</button>
+    <button onclick="borrar()">Borrar</button>
+
     <script>
         function agregarElemento() {
         const tarea = document.getElementById('tarea').value;
@@ -21,7 +24,8 @@
             
             lista.appendChild(elemento);
 
-            guardarTareas();
+            // Para guardar sin botón: 
+            //guardarTareas();
         }
     }
 
@@ -45,7 +49,9 @@
         }
     }
 
-    window.onload = cargarTareas;
+    function borrar() { 
+        localStorage.clear();
+     }
     </script>
 </body>
 </html>
