@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convertidor PDF/Word</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Convertidor de Archivos PDF/Word</h1>
+        <form id="convertForm">
+            <label for="fileInput">Selecciona un archivo:</label>
+            <input type="file" id="fileInput" accept=".pdf, .docx">
+            <label for="conversionType">Tipo de Conversión:</label>
+            <select id="conversionType">
+                <option value="pdf_to_word">PDF a Word</option>
+                <option value="word_to_pdf">Word a PDF</option>
+            </select>
+            <button type="submit">Convertir</button>
+        </form>
+        <div id="result"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
