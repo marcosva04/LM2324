@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Registro</title>
+</head>
+<body>
+
+    <label for="email">Correo Electrónico:</label><input id="email" placeholder="ejemplo@iesamachado.org" required><br><br>
+
+    <label for="dni">DNI:</label><input id="dni" type="text" required><br><br>
+
+    <label for="password1">Contraseña:</label><input id="password1" type="password" required><br><br>
+    <label for="password2">Confirmar contraseña:</label><input id="password2" type="password" required><br><br>
+
+    <label for="terminos">Acepto política de privacidad: </label><input id="terminos" type="checkbox" required><br><br>
+
+    <button onclick="validar()">Registrar</button><br><br>
+
+    <p id="resultado"></p>
+    <script>
+        function validar(){
+
+            let estanCorrectos = true;
+
+            if (!validarEmail()){ // Si no es válido el correo
+                document.getElementById("resultado").innerHTML = "El correo debe de tener el formato correcto y pertenecer al dominio iesamachado.org.";
+                estanCorrectos = false;
+            }
+
+            if (!validarDNI()){
+                document.getElementById("resultado").innerHTML = "El DNI debe de tener el formato correcto (8 números seguidos de una letra)";
+                estanCorrectos = false;
+            }
+
+            if (!validaPasswords()){ // Si no son válidas las contraseñas
+                document.getElementById("resultado").innerHTML = "La contraseña debe de tener al menos 12 dígitos y ser solo números";
+                estanCorrectos = false;
+            }
+
+            if (document.getElementById('terminos').checked) {
+                document.getElementById("resultado").innerHTML = ''; // El campo está OK
+                estanCorrectos = true;
+            }
+            else{
+                document.getElementById("resultado").innerHTML = "Debe aceptar la política de privacidad";
+                estanCorrectos = false;
+            }
+            
+            if (estanCorrectos) {
+                document.getElementById("resultado").innerHTML = "Usuario registrado con éxito";
+                
+            }
+            return estanCorrectos;
+        }
+
+        function validarEmail(){
+
+                var emailField = document.getElementById('email');
+                var validEmail =  /^\w+([.-_+]?\w+)*@iesamachado.org/;
+                return validEmail.test(emailField.value);
+            
+            
+        } 
+
+        function validaPasswords(){
+
+                let clave1 = document.getElementById("password1").value;
+                let clave2 = document.getElementById("password2").value;
+                if (clave1 > 12) {
+                    this.value = this.value.slice(0,9); 
+                }
+                return validaPassword.test(clave1) && clave1 === clave2;
+            
+            
+        }
+
+        function validarDNI(){
+
+                var dniField = document.getElementById('dni');
+                var validdni =  /^[A-Z]\d{8}$/;
+                return validdni.test(dniField.value);
+            }
+        
+
+    </script>
+</body>
+</html>
